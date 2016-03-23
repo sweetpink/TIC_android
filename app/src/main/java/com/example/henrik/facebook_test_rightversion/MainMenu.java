@@ -16,7 +16,7 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         alarmChecker();
-        System.out.print("Ändrat henrik");
+        System.out.print("Ändrat nicklas");
     }
 
 
