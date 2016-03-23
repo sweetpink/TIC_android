@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
+    tools:context="com.example.brisendal.tekkeninformationcentre.PunishmentViewer"
+    android:id="@+id/mainContainer">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerPortrait"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:onClick="playerPortraitClicked" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opponentPortrait"
+        android:src="@drawable/character_dragunov"
+        android:layout_alignTop="@+id/playerPortrait"
+        android:layout_alignParentEnd="true"
+        android:onClick="opponentPortraitClicked"
+        android:nestedScrollingEnabled="false" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameSelector"
+        android:layout_alignTop="@+id/playerPortrait"
+        android:layout_toEndOf="@+id/playerPortrait"
+        android:layout_alignParentStart="false"
+        android:layout_toStartOf="@+id/opponentPortrait"
+        android:gravity="center"
+        android:textColor="#D9D9D9"
+         />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView"
+        android:layout_below="@+id/playerPortrait"
+        android:layout_alignParentStart="true" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/columnLayout">
+            </TableLayout>
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView" >
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rowLayout"
+                    android:paddingTop="10dp"></TableLayout>
+            </ScrollView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specific punishment"
+        android:id="@+id/specificBox"
+        android:layout_below="@+id/frameSelector"
+        android:layout_alignEnd="@+id/frameSelector" />
+
+</RelativeLayout>
+
+
+
+

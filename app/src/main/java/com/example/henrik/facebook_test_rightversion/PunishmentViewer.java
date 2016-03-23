@@ -1,0 +1,361 @@
+package com.example.henrik.facebook_test_rightversion;
+//--------------------------------------------ANDROID IMPORTS-------------------------------------\\
+
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.res.AssetManager;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TableRow.LayoutParams;
+import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+//-----------------------------------------JAVA IMPORTS-------------------------------------------\\
+
+public class PunishmentViewer extends AppCompatActivity {
+//------------------------------------------VARIABLES---------------------------------------------\\
+    private LayoutParams lp = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+
+    private Spinner frameSelector;
+
+    private CheckBox specificBox;
+
+    private String playerCharacter = "";
+    private String opponentCharacter = "";
+
+    private ArrayList<Move> playerPunishList = new ArrayList<>();
+    private ArrayList<Move> opponentMovelist = new ArrayList<>();
+    private List<String> mLines = new ArrayList<>();
+
+//------------------------------------------ON START-UP-------------------------------------------\\
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_punishment_viewer);
+
+        createFragment("player");
+
+        String[] arraySpinner = new String[] {"-10", "-11", "-12", "-13", "-14", "-15", "-16", "-17"};
+        frameSelector = (Spinner) findViewById(R.id.frameSelector);
+
+        frameSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                createTableRows();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        specificBox = (CheckBox) findViewById(R.id.specificBox);
+
+        specificBox.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                createTableRows();
+            }
+        });
+
+        createTableHeaders();
+
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, R.layout.custom_spinner, arraySpinner);
+        frameSelector.setAdapter(listAdapter);
+    }
+
+//---------------------------------------PRIVATE METHODS------------------------------------------\\
+    private void createFragment(String stringIdentifier){
+        CharacterSelection fragCharSelect = new CharacterSelection();
+        Bundle sendString = new Bundle();
+
+        sendString.putString("imagePressed", stringIdentifier);
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+
+        fragCharSelect.setArguments(sendString);
+        transaction.replace(R.id.mainContainer, fragCharSelect);
+        transaction.addToBackStack("fragAbout to backstack");
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        transaction.commit();
+    }
+
+    private void readFile(String fileName){
+        AssetManager am = getAssets();
+        String filePath = "Movelists/" + fileName + ".txt";
+
+        try {
+            InputStream is = am.open(filePath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String line;
+
+            while ((line = reader.readLine()) != null)
+                mLines.add(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createTableHeaders(){
+        TableLayout primaryTable = (TableLayout) findViewById(R.id.columnLayout);
+        TableRow columns = new TableRow(this);
+
+        TextView columnCommand = new TextView(this);
+        columnCommand.setLayoutParams(lp);
+        columnCommand.setTextColor(Color.WHITE);
+        columnCommand.setText("Command");
+        columnCommand.setWidth(500);
+
+        TextView columnHitLevel = new TextView(this);
+        columnHitLevel.setLayoutParams(lp);
+        columnHitLevel.setTextColor(Color.WHITE);
+        columnHitLevel.setText("Hit Level");
+        columnHitLevel.setPadding(30, 0, 0, 0);
+        columnHitLevel.setWidth(400);
+
+        TextView columnDamage = new TextView(this);
+        columnDamage.setLayoutParams(lp);
+        columnDamage.setTextColor(Color.WHITE);
+        columnDamage.setText("Damage");
+        columnDamage.setPadding(30, 0, 0, 0);
+        columnDamage.setWidth(400);
+
+        TextView columnStartUpFrame = new TextView(this);
+        columnStartUpFrame.setLayoutParams(lp);
+        columnStartUpFrame.setTextColor(Color.WHITE);
+        columnStartUpFrame.setText("Start up Frame");
+        columnStartUpFrame.setPadding(30, 0, 0, 0);
+        columnStartUpFrame.setWidth(400);
+
+        TextView columnBlockFrame = new TextView(this);
+        columnBlockFrame.setLayoutParams(lp);
+        columnBlockFrame.setTextColor(Color.WHITE);
+        columnBlockFrame.setText("Block Frame");
+        columnBlockFrame.setPadding(30, 0, 0, 0);
+        columnBlockFrame.setWidth(400);
+
+        TextView columnHitFrame = new TextView(this);
+        columnHitFrame.setLayoutParams(lp);
+        columnHitFrame.setTextColor(Color.WHITE);
+        columnHitFrame.setText("Hit Frame");
+        columnHitFrame.setPadding(30, 0, 0, 0);
+        columnHitFrame.setWidth(400);
+
+        TextView columnCounterHitFrame = new TextView(this);
+        columnCounterHitFrame.setLayoutParams(lp);
+        columnCounterHitFrame.setTextColor(Color.WHITE);
+        columnCounterHitFrame.setText("Counter hit Frame");
+        columnCounterHitFrame.setPadding(30, 0, 0, 0);
+        columnCounterHitFrame.setWidth(400);
+
+        columns.addView(columnCommand);
+        columns.addView(columnHitLevel);
+        columns.addView(columnDamage);
+        columns.addView(columnStartUpFrame);
+        columns.addView(columnBlockFrame);
+        columns.addView(columnHitFrame);
+        columns.addView(columnCounterHitFrame);
+
+        primaryTable.addView(columns, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+    }
+
+    private void createTableRows(){
+        TableLayout secondaryTable = (TableLayout) findViewById(R.id.rowLayout);
+        secondaryTable.removeAllViews();
+        TableRow[] tableRows = new TableRow[opponentMovelist.size()];
+        int counter = 0;
+        int color = 0;
+
+        for(int i = 0; i < opponentMovelist.size(); i++) {
+            if ((counter % 2) == 0) {
+                // number is even
+                color = Color.parseColor("#801C1C1C");
+            }
+
+            else{
+                // number is odd
+                color = Color.parseColor("#800F0F0F");
+            }
+
+            if (specificBox.isChecked() == false) {
+                if (Integer.parseInt(opponentMovelist.get(i).getBlockFrame()) <= Integer.parseInt(frameSelector.getSelectedItem().toString())) {
+                    tableRows[i] = new TableRow(this);
+                    tableRows[i].setLayoutParams(lp);
+
+                    tableRows[i].setBackgroundColor(color);
+
+                    TextView command = new TextView(this);
+                    command.setLayoutParams(lp);
+                    command.setTextColor(Color.WHITE);
+                    command.setText(opponentMovelist.get(i).getCommand());
+                    command.setWidth(500);
+
+                    TextView hitLevel = new TextView(this);
+                    hitLevel.setLayoutParams(lp);
+                    hitLevel.setTextColor(Color.WHITE);
+                    hitLevel.setText(opponentMovelist.get(i).getHitLevel());
+                    hitLevel.setPadding(30, 0, 0, 0);
+                    hitLevel.setWidth(400);
+
+                    TextView damage = new TextView(this);
+                    damage.setLayoutParams(lp);
+                    damage.setTextColor(Color.WHITE);
+                    damage.setText(opponentMovelist.get(i).getDamage());
+                    damage.setPadding(30, 0, 0, 0);
+                    damage.setWidth(400);
+
+                    TextView startUpFrame = new TextView(this);
+                    startUpFrame.setLayoutParams(lp);
+                    startUpFrame.setTextColor(Color.WHITE);
+                    startUpFrame.setText(opponentMovelist.get(i).getStartUpFrame());
+                    startUpFrame.setPadding(30, 0, 0, 0);
+                    startUpFrame.setWidth(400);
+
+                    TextView blockFrame = new TextView(this);
+                    blockFrame.setLayoutParams(lp);
+                    blockFrame.setTextColor(Color.WHITE);
+                    blockFrame.setText(opponentMovelist.get(i).getBlockFrame());
+                    blockFrame.setPadding(30, 0, 0, 0);
+                    blockFrame.setWidth(400);
+
+                    TextView hitFrame = new TextView(this);
+                    hitFrame.setLayoutParams(lp);
+                    hitFrame.setTextColor(Color.WHITE);
+                    hitFrame.setText(opponentMovelist.get(i).getHitFrame());
+                    hitFrame.setPadding(30, 0, 0, 0);
+                    hitFrame.setWidth(400);
+
+                    TextView counterHitFrame = new TextView(this);
+                    counterHitFrame.setLayoutParams(lp);
+                    counterHitFrame.setTextColor(Color.WHITE);
+                    counterHitFrame.setText(opponentMovelist.get(i).getCounterHitFrame());
+                    counterHitFrame.setPadding(30, 0, 0, 0);
+                    counterHitFrame.setWidth(400);
+
+                    tableRows[i].addView(command);
+                    tableRows[i].addView(hitLevel);
+                    tableRows[i].addView(damage);
+                    tableRows[i].addView(startUpFrame);
+                    tableRows[i].addView(blockFrame);
+                    tableRows[i].addView(hitFrame);
+                    tableRows[i].addView(counterHitFrame);
+
+                    secondaryTable.addView(tableRows[i], new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+                    counter++;
+                }
+            }
+            else if(specificBox.isChecked() == true){
+                if (Integer.parseInt(opponentMovelist.get(i).getBlockFrame()) == Integer.parseInt(frameSelector.getSelectedItem().toString())) {
+                    tableRows[i] = new TableRow(this);
+                    tableRows[i].setLayoutParams(lp);
+                    tableRows[i].setBackgroundColor(color);
+
+                    TextView command = new TextView(this);
+                    command.setLayoutParams(lp);
+                    command.setTextColor(Color.WHITE);
+                    command.setText(opponentMovelist.get(i).getCommand());
+                    command.setWidth(500);
+
+                    TextView hitLevel = new TextView(this);
+                    hitLevel.setLayoutParams(lp);
+                    hitLevel.setTextColor(Color.WHITE);
+                    hitLevel.setText(opponentMovelist.get(i).getHitLevel());
+                    hitLevel.setPadding(30, 0, 0, 0);
+                    hitLevel.setWidth(400);
+
+                    TextView damage = new TextView(this);
+                    damage.setLayoutParams(lp);
+                    damage.setTextColor(Color.WHITE);
+                    damage.setText(opponentMovelist.get(i).getDamage());
+                    damage.setPadding(30, 0, 0, 0);
+                    damage.setWidth(400);
+
+                    TextView startUpFrame = new TextView(this);
+                    startUpFrame.setLayoutParams(lp);
+                    startUpFrame.setTextColor(Color.WHITE);
+                    startUpFrame.setText(opponentMovelist.get(i).getStartUpFrame());
+                    startUpFrame.setPadding(30, 0, 0, 0);
+                    startUpFrame.setWidth(400);
+
+                    TextView blockFrame = new TextView(this);
+                    blockFrame.setLayoutParams(lp);
+                    blockFrame.setTextColor(Color.WHITE);
+                    blockFrame.setText(opponentMovelist.get(i).getBlockFrame());
+                    blockFrame.setPadding(30, 0, 0, 0);
+                    blockFrame.setWidth(400);
+
+                    TextView hitFrame = new TextView(this);
+                    hitFrame.setLayoutParams(lp);
+                    hitFrame.setTextColor(Color.WHITE);
+                    hitFrame.setText(opponentMovelist.get(i).getHitFrame());
+                    hitFrame.setPadding(30, 0, 0, 0);
+                    hitFrame.setWidth(400);
+
+                    TextView counterHitFrame = new TextView(this);
+                    counterHitFrame.setLayoutParams(lp);
+                    counterHitFrame.setTextColor(Color.WHITE);
+                    counterHitFrame.setText(opponentMovelist.get(i).getCounterHitFrame());
+                    counterHitFrame.setPadding(30, 0, 0, 0);
+                    counterHitFrame.setWidth(400);
+
+                    tableRows[i].addView(command);
+                    tableRows[i].addView(hitLevel);
+                    tableRows[i].addView(damage);
+                    tableRows[i].addView(startUpFrame);
+                    tableRows[i].addView(blockFrame);
+                    tableRows[i].addView(hitFrame);
+                    tableRows[i].addView(counterHitFrame);
+
+                    secondaryTable.addView(tableRows[i], new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+                    counter++;
+                }
+            }
+        }
+
+    }
+
+//-------------------------------------PUBLIC METHODS---------------------------------------------\\
+    public void playerPortraitClicked(View view){
+        String imagePressed = "player";
+        createFragment(imagePressed);
+    }
+
+    public void opponentPortraitClicked(View view){
+        String imagePressed = "opponent";
+        createFragment(imagePressed);
+    }
+
+    public void setPlayerCharacter(String selectedPlayer){
+        playerCharacter = selectedPlayer;
+    }
+
+    public void setOpponentCharacter(String selectedOpponent){
+        opponentCharacter = selectedOpponent;
+
+        opponentMovelist.clear();
+        readFile(opponentCharacter);
+
+        for(int i = 0; i < mLines.size(); i+=10){
+            opponentMovelist.add(new Move("", mLines.get(i), mLines.get(i + 1), mLines.get(i + 2), mLines.get(i + 3), mLines.get(i + 4), mLines.get(i + 5), mLines.get(i + 6), mLines.get(i + 7), mLines.get(i + 8)));
+        }
+
+        mLines.clear();
+        createTableRows();
+    }
+
+}

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Tekken Information Centre</string>
+    <string name="facebook_app_id">143080496085237</string>
+
+    <string name="choice_prompt">Choose an uploader</string>
+
+    <string-array name="uploaders_array">
+        <item>All</item>
+        <item>ATP</item>
+        <item>JDCR</item>
+        <item>LUYG</item>
+        <item>TMM</item>
+    </string-array>
+</resources>
