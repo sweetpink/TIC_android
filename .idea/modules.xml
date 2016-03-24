@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Facebook_test_rightversion.iml" filepath="$PROJECT_DIR$/Facebook_test_rightversion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TIC_android.iml" filepath="$PROJECT_DIR$/TIC_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

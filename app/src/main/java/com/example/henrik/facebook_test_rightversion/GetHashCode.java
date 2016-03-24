@@ -31,6 +31,7 @@ public class GetHashCode extends Application {        //Klass bara för att få 
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
                 Log.d("Se hit:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                System.out.println("testför github");
             }
 
 
