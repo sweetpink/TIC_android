@@ -28,16 +28,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/facebookButton"
         android:src="@drawable/mainmenu_facebookbutton"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="32dp"
         android:background="#007d6b6b"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+
         android:clickable="true"
         android:onClick="facebookButton"
-        android:nestedScrollingEnabled="true" />
+        android:nestedScrollingEnabled="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageButton7" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -49,8 +47,8 @@
         android:layout_alignTop="@+id/facebookButton"
         android:layout_toRightOf="@+id/facebookButton"
         android:layout_toEndOf="@+id/facebookButton"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -107,4 +105,28 @@
         android:layout_below="@+id/imageButton6"
         android:layout_centerHorizontal="true"
         android:onClick="tournamentButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/youtubebutton"
+        android:src="@drawable/mainmenu_youtubebutton"
+        android:background="#007d6b6b"
+        android:clickable="true"
+        android:layout_marginLeft="25dp"
+        android:layout_alignTop="@+id/imageButton2"
+        android:layout_toEndOf="@+id/imageButton2"
+        android:onClick="youtubeButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/patreonbutton"
+        android:src="@drawable/mainmenu_patreonbutton"
+        android:background="#007d6b6b"
+        android:clickable="true"
+        android:layout_marginLeft="34dp"
+        android:onClick="patreonButton"
+        android:layout_alignTop="@+id/youtubebutton"
+        android:layout_alignEnd="@+id/imageButton7" />
 </RelativeLayout>
