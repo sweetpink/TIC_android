@@ -29,7 +29,7 @@ import java.util.List;
 
 public class PunishmentViewer extends AppCompatActivity {
 //------------------------------------------VARIABLES---------------------------------------------\\
-    private LayoutParams lp = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+    private LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
     private Spinner frameSelector;
 
@@ -73,7 +73,7 @@ public class PunishmentViewer extends AppCompatActivity {
 
         createTableHeaders();
 
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, R.layout.custom_spinner, arraySpinner);
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, R.layout.custom_spinner, arraySpinner);
         frameSelector.setAdapter(listAdapter);
     }
 
@@ -117,51 +117,65 @@ public class PunishmentViewer extends AppCompatActivity {
 
         TextView columnCommand = new TextView(this);
         columnCommand.setLayoutParams(lp);
-        columnCommand.setTextColor(Color.WHITE);
         columnCommand.setText("Command");
         columnCommand.setWidth(500);
+        columnCommand.setTextColor(Color.parseColor("#D9D9D9"));
+        columnCommand.setTextSize(16);
+        columnCommand.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnHitLevel = new TextView(this);
         columnHitLevel.setLayoutParams(lp);
-        columnHitLevel.setTextColor(Color.WHITE);
         columnHitLevel.setText("Hit Level");
         columnHitLevel.setPadding(30, 0, 0, 0);
         columnHitLevel.setWidth(400);
+        columnHitLevel.setTextColor(Color.parseColor("#D9D9D9"));
+        columnHitLevel.setTextSize(16);
+        columnHitLevel.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnDamage = new TextView(this);
         columnDamage.setLayoutParams(lp);
-        columnDamage.setTextColor(Color.WHITE);
         columnDamage.setText("Damage");
         columnDamage.setPadding(30, 0, 0, 0);
         columnDamage.setWidth(400);
+        columnDamage.setTextColor(Color.parseColor("#D9D9D9"));
+        columnDamage.setTextSize(16);
+        columnDamage.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnStartUpFrame = new TextView(this);
         columnStartUpFrame.setLayoutParams(lp);
-        columnStartUpFrame.setTextColor(Color.WHITE);
         columnStartUpFrame.setText("Start up Frame");
         columnStartUpFrame.setPadding(30, 0, 0, 0);
         columnStartUpFrame.setWidth(400);
+        columnStartUpFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnStartUpFrame.setTextSize(16);
+        columnStartUpFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnBlockFrame = new TextView(this);
         columnBlockFrame.setLayoutParams(lp);
-        columnBlockFrame.setTextColor(Color.WHITE);
         columnBlockFrame.setText("Block Frame");
         columnBlockFrame.setPadding(30, 0, 0, 0);
         columnBlockFrame.setWidth(400);
+        columnBlockFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnBlockFrame.setTextSize(16);
+        columnBlockFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnHitFrame = new TextView(this);
         columnHitFrame.setLayoutParams(lp);
-        columnHitFrame.setTextColor(Color.WHITE);
         columnHitFrame.setText("Hit Frame");
         columnHitFrame.setPadding(30, 0, 0, 0);
         columnHitFrame.setWidth(400);
+        columnHitFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnHitFrame.setTextSize(16);
+        columnHitFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnCounterHitFrame = new TextView(this);
         columnCounterHitFrame.setLayoutParams(lp);
-        columnCounterHitFrame.setTextColor(Color.WHITE);
         columnCounterHitFrame.setText("Counter hit Frame");
         columnCounterHitFrame.setPadding(30, 0, 0, 0);
-        columnCounterHitFrame.setWidth(400);
+        columnCounterHitFrame.setWidth(450);
+        columnCounterHitFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnCounterHitFrame.setTextSize(16);
+        columnCounterHitFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         columns.addView(columnCommand);
         columns.addView(columnHitLevel);
@@ -171,7 +185,7 @@ public class PunishmentViewer extends AppCompatActivity {
         columns.addView(columnHitFrame);
         columns.addView(columnCounterHitFrame);
 
-        primaryTable.addView(columns, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        primaryTable.addView(columns, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
 
     private void createTableRows(){
@@ -179,7 +193,7 @@ public class PunishmentViewer extends AppCompatActivity {
         secondaryTable.removeAllViews();
         TableRow[] tableRows = new TableRow[opponentMovelist.size()];
         int counter = 0;
-        int color = 0;
+        int color;
 
         for(int i = 0; i < opponentMovelist.size(); i++) {
             if ((counter % 2) == 0) {
@@ -192,7 +206,7 @@ public class PunishmentViewer extends AppCompatActivity {
                 color = Color.parseColor("#800F0F0F");
             }
 
-            if (specificBox.isChecked() == false) {
+            if (!specificBox.isChecked()) {
                 if (Integer.parseInt(opponentMovelist.get(i).getBlockFrame()) <= Integer.parseInt(frameSelector.getSelectedItem().toString())) {
                     tableRows[i] = new TableRow(this);
                     tableRows[i].setLayoutParams(lp);
@@ -245,7 +259,7 @@ public class PunishmentViewer extends AppCompatActivity {
                     counterHitFrame.setTextColor(Color.WHITE);
                     counterHitFrame.setText(opponentMovelist.get(i).getCounterHitFrame());
                     counterHitFrame.setPadding(30, 0, 0, 0);
-                    counterHitFrame.setWidth(400);
+                    counterHitFrame.setWidth(450);
 
                     tableRows[i].addView(command);
                     tableRows[i].addView(hitLevel);
@@ -255,11 +269,11 @@ public class PunishmentViewer extends AppCompatActivity {
                     tableRows[i].addView(hitFrame);
                     tableRows[i].addView(counterHitFrame);
 
-                    secondaryTable.addView(tableRows[i], new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+                    secondaryTable.addView(tableRows[i], new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
                     counter++;
                 }
             }
-            else if(specificBox.isChecked() == true){
+            else if(specificBox.isChecked()){
                 if (Integer.parseInt(opponentMovelist.get(i).getBlockFrame()) == Integer.parseInt(frameSelector.getSelectedItem().toString())) {
                     tableRows[i] = new TableRow(this);
                     tableRows[i].setLayoutParams(lp);
@@ -311,7 +325,7 @@ public class PunishmentViewer extends AppCompatActivity {
                     counterHitFrame.setTextColor(Color.WHITE);
                     counterHitFrame.setText(opponentMovelist.get(i).getCounterHitFrame());
                     counterHitFrame.setPadding(30, 0, 0, 0);
-                    counterHitFrame.setWidth(400);
+                    counterHitFrame.setWidth(450);
 
                     tableRows[i].addView(command);
                     tableRows[i].addView(hitLevel);
@@ -321,7 +335,7 @@ public class PunishmentViewer extends AppCompatActivity {
                     tableRows[i].addView(hitFrame);
                     tableRows[i].addView(counterHitFrame);
 
-                    secondaryTable.addView(tableRows[i], new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+                    secondaryTable.addView(tableRows[i], new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
                     counter++;
                 }
             }

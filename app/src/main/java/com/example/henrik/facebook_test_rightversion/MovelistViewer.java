@@ -1,5 +1,7 @@
 package com.example.henrik.facebook_test_rightversion;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class MovelistViewer extends AppCompatActivity {
     private List<String> mLines = new ArrayList<>();
-    private TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+    private TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
     private ArrayList<Move> playerMovelist = new ArrayList<>();
     private CheckBox normalMoves;
     private CheckBox pokesMoves;
@@ -45,7 +47,28 @@ public class MovelistViewer extends AppCompatActivity {
         tailspins = (CheckBox) findViewById(R.id.tailspinsBox);
 
         createTableHeaders();
-        setPlayerCharacter("kazuya");
+        createFragment();
+    }
+
+    public void playerPortraitClicked(View view){
+        createFragment();
+    }
+
+    private void createFragment(){
+        CharacterSelection fragCharSelect = new CharacterSelection();
+        Bundle sendString = new Bundle();
+
+        sendString.putString("imagePressed", "movelist");
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+
+        fragCharSelect.setArguments(sendString);
+        transaction.replace(R.id.mainContainer, fragCharSelect);
+        transaction.addToBackStack("fragAbout to backstack");
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        transaction.commit();
     }
 
     public void setPlayerCharacter(String selectedCharacter){
@@ -67,51 +90,65 @@ public class MovelistViewer extends AppCompatActivity {
 
         TextView columnCommand = new TextView(this);
         columnCommand.setLayoutParams(lp);
-        columnCommand.setTextColor(Color.WHITE);
         columnCommand.setText("Command");
         columnCommand.setWidth(500);
+        columnCommand.setTextColor(Color.parseColor("#D9D9D9"));
+        columnCommand.setTextSize(16);
+        columnCommand.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnHitLevel = new TextView(this);
         columnHitLevel.setLayoutParams(lp);
-        columnHitLevel.setTextColor(Color.WHITE);
         columnHitLevel.setText("Hit Level");
         columnHitLevel.setPadding(30, 0, 0, 0);
         columnHitLevel.setWidth(400);
+        columnHitLevel.setTextColor(Color.parseColor("#D9D9D9"));
+        columnHitLevel.setTextSize(16);
+        columnHitLevel.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnDamage = new TextView(this);
         columnDamage.setLayoutParams(lp);
-        columnDamage.setTextColor(Color.WHITE);
         columnDamage.setText("Damage");
         columnDamage.setPadding(30, 0, 0, 0);
         columnDamage.setWidth(400);
+        columnDamage.setTextColor(Color.parseColor("#D9D9D9"));
+        columnDamage.setTextSize(16);
+        columnDamage.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnStartUpFrame = new TextView(this);
         columnStartUpFrame.setLayoutParams(lp);
-        columnStartUpFrame.setTextColor(Color.WHITE);
         columnStartUpFrame.setText("Start up Frame");
         columnStartUpFrame.setPadding(30, 0, 0, 0);
         columnStartUpFrame.setWidth(400);
+        columnStartUpFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnStartUpFrame.setTextSize(16);
+        columnStartUpFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnBlockFrame = new TextView(this);
         columnBlockFrame.setLayoutParams(lp);
-        columnBlockFrame.setTextColor(Color.WHITE);
         columnBlockFrame.setText("Block Frame");
         columnBlockFrame.setPadding(30, 0, 0, 0);
         columnBlockFrame.setWidth(400);
+        columnBlockFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnBlockFrame.setTextSize(16);
+        columnBlockFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnHitFrame = new TextView(this);
         columnHitFrame.setLayoutParams(lp);
-        columnHitFrame.setTextColor(Color.WHITE);
         columnHitFrame.setText("Hit Frame");
         columnHitFrame.setPadding(30, 0, 0, 0);
         columnHitFrame.setWidth(400);
+        columnHitFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnHitFrame.setTextSize(16);
+        columnHitFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         TextView columnCounterHitFrame = new TextView(this);
         columnCounterHitFrame.setLayoutParams(lp);
-        columnCounterHitFrame.setTextColor(Color.WHITE);
-        columnCounterHitFrame.setText("Counter hit Frame");
+        columnCounterHitFrame.setText("Counter hit Frame ");
         columnCounterHitFrame.setPadding(30, 0, 0, 0);
-        columnCounterHitFrame.setWidth(400);
+        columnCounterHitFrame.setWidth(450);
+        columnCounterHitFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        columnCounterHitFrame.setTextSize(16);
+        columnCounterHitFrame.setBackgroundColor(Color.parseColor("#800A0A0A"));
 
         columns.addView(columnCommand);
         columns.addView(columnHitLevel);
@@ -121,7 +158,7 @@ public class MovelistViewer extends AppCompatActivity {
         columns.addView(columnHitFrame);
         columns.addView(columnCounterHitFrame);
 
-        primaryTable.addView(columns, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        primaryTable.addView(columns, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
 
     public void createTableRows(){
@@ -223,7 +260,7 @@ public class MovelistViewer extends AppCompatActivity {
         counterHitFrame.setTextColor(Color.WHITE);
         counterHitFrame.setText(playerMovelist.get(index).getCounterHitFrame());
         counterHitFrame.setPadding(30, 0, 0, 0);
-        counterHitFrame.setWidth(400);
+        counterHitFrame.setWidth(450);
 
         tableRows[index].addView(command);
         tableRows[index].addView(hitLevel);
@@ -233,7 +270,7 @@ public class MovelistViewer extends AppCompatActivity {
         tableRows[index].addView(hitFrame);
         tableRows[index].addView(counterHitFrame);
 
-        secondaryTable.addView(tableRows[index], new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        secondaryTable.addView(tableRows[index], new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
 
     private void readFile(String fileName){
