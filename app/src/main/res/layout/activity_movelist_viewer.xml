@@ -7,14 +7,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
     tools:context="com.example.brisendal.tekkeninformationcentre.MovelistViewer"
-    android:background="@drawable/background_main">
+    android:background="@drawable/background_main"
+    android:id="@+id/mainContainer">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/playerPortrait"
-        android:onClick="buttonClicked"
+        android:onClick="playerPortraitClicked"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/character_gigas" />
@@ -45,8 +47,7 @@
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/rowLayout"
-                    android:paddingTop="10dp"></TableLayout>
+                    android:id="@+id/rowLayout"/>
             </ScrollView>
         </LinearLayout>
     </HorizontalScrollView>
@@ -61,7 +62,8 @@
         android:layout_alignParentStart="true"
         android:checked="true"
         android:clickable="false"
-        android:onClick="checkBoxClicked" />
+        android:onClick="checkBoxClicked"
+        android:buttonTint="#2E2E2E" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -72,7 +74,8 @@
         android:layout_alignTop="@+id/normalBox"
         android:layout_centerHorizontal="true"
         android:checked="true"
-        android:onClick="checkBoxClicked" />
+        android:onClick="checkBoxClicked"
+        android:buttonTint="#2E2E2E" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -83,7 +86,8 @@
         android:layout_below="@+id/normalBox"
         android:layout_alignParentStart="true"
         android:checked="true"
-        android:onClick="checkBoxClicked" />
+        android:onClick="checkBoxClicked"
+        android:buttonTint="#2E2E2E" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -94,7 +98,8 @@
         android:layout_below="@+id/pokesBox"
         android:layout_alignStart="@+id/pokesBox"
         android:checked="true"
-        android:onClick="checkBoxClicked" />
+        android:onClick="checkBoxClicked"
+        android:buttonTint="#2E2E2E" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -105,7 +110,8 @@
         android:checked="true"
         android:onClick="checkBoxClicked"
         android:layout_above="@+id/tailspinsBox"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:buttonTint="#2E2E2E" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -116,6 +122,7 @@
         android:layout_below="@+id/goodBox"
         android:layout_alignStart="@+id/goodBox"
         android:checked="true"
-        android:onClick="checkBoxClicked" />
+        android:onClick="checkBoxClicked"
+        android:buttonTint="#2E2E2E" />
 
 </RelativeLayout>

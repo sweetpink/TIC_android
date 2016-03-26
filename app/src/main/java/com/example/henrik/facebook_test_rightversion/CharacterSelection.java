@@ -10,9 +10,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by Nicklas on 2016-03-11.
- */
 public class CharacterSelection extends Fragment {
     private int[] characterPortraits = new int[]{R.drawable.character_akuma, R.drawable.character_alisa,R.drawable.character_asuka,R.drawable.character_bryan,R.drawable.character_claudio,R.drawable.character_deviljin,R.drawable.character_dragunov,R.drawable.character_feng,R.drawable.character_gigas,R.drawable.character_heihachi,R.drawable.character_hwoarang,R.drawable.character_jack7,R.drawable.character_jin,R.drawable.character_josie,R.drawable.character_katarina,R.drawable.character_kazumi,R.drawable.character_kazuya,R.drawable.character_king,R.drawable.character_lars,R.drawable.character_law,R.drawable.character_leo,R.drawable.character_lili,R.drawable.character_luckychloe,R.drawable.character_nina,R.drawable.character_paul,R.drawable.character_shaheen,R.drawable.character_steve,R.drawable.character_xiaoyu,R.drawable.character_yoshimitsu};
     private String[] characterNames = {"akuma", "alisa", "asuka", "bryan","claudio","deviljin","dragunov","feng","gigas","heihachi","hwoarang","jack7","jin","josie","katarina","kazumi","kazuya","king","lars","law","leo","lili","luckychloe","nina","paul","shaheen","steve","xiaoyu","yoshimitsu"};
@@ -26,7 +23,7 @@ public class CharacterSelection extends Fragment {
         imagePressed = this.getArguments().getString("imagePressed");
 
         infoText = (TextView) view.findViewById(R.id.infoText);
-        if(imagePressed.equals("player")){
+        if(imagePressed.equals("player") || imagePressed.equals("movelist")){
             infoText.setText("Select your character:");
         }
         else if(imagePressed.equals("opponent")){
@@ -49,6 +46,21 @@ public class CharacterSelection extends Fragment {
     private void setCharacterPortrait(int id){
         ImageView newCharacter = null;
 
+        switch(imagePressed){
+            case "player":
+                newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
+                ((PunishmentViewer)getActivity()).setPlayerCharacter(characterNames[id]);
+                break;
+            case "opponent":
+                newCharacter = (ImageView)getActivity().findViewById(R.id.opponentPortrait);
+                ((PunishmentViewer)getActivity()).setOpponentCharacter(characterNames[id]);
+                break;
+            case "movelist":
+                newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
+                ((MovelistViewer)getActivity()).setPlayerCharacter(characterNames[id]);
+                break;
+        }
+        /*
         if(imagePressed.equals("player")){
             newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
             ((PunishmentViewer)getActivity()).setPlayerCharacter(characterNames[id]);
@@ -57,8 +69,11 @@ public class CharacterSelection extends Fragment {
             newCharacter = (ImageView)getActivity().findViewById(R.id.opponentPortrait);
             ((PunishmentViewer)getActivity()).setOpponentCharacter(characterNames[id]);
         }
-
-        //Log.d("IMAGE PRESSED", )
+        else if(imagePressed.equals("movelist")){
+            newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
+            ((MovelistViewer)getActivity()).setPlayerCharacter(characterNames[id]);
+        }
+*/
         newCharacter.setImageResource(characterPortraits[id]);
     }
 }
