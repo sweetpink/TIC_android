@@ -3,6 +3,7 @@ package com.example.henrik.facebook_test_rightversion;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -33,8 +34,8 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void comboCreatorButton(View view){
-        /*Intent intent = new Intent(MainMenu.this, ComboCreator.class);     //Lägg till rätt namn för ComboCreator Klassen
-        startActivity(intent);*/
+        Intent intent = new Intent(MainMenu.this, ComboCreator.class);     //Lägg till rätt namn för ComboCreator Klassen
+        startActivity(intent);
     }
 
     public void tutorialsButton(View view){
@@ -63,15 +64,21 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void youtubeButton(View view){
-
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://www.youtube.com/user/ashens"));
+        startActivity(intent);
     }
 
     public void twitterButton(View view){
-
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://twitter.com/tic_app"));
+        startActivity(intent);
     }
 
     public void patreonButton(View view){
-
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://www.patreon.com/"));
+        startActivity(intent);
     }
     private void createYourFragment(Fragment fragmentName) {
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
