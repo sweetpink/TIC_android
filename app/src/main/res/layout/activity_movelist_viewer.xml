@@ -19,7 +19,7 @@
         android:onClick="playerPortraitClicked"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/character_gigas" />
+        android:src="@drawable/character_unknown" />
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -124,5 +124,36 @@
         android:checked="true"
         android:onClick="checkBoxClicked"
         android:buttonTint="#2E2E2E" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/movelist_rageart"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/playerPortrait"
+        android:layout_marginLeft="5dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:src="@drawable/movelist_ragecombo"
+        android:layout_below="@+id/imageView2"
+        android:layout_toRightOf="@+id/playerPortrait"
+        android:layout_toEndOf="@+id/playerPortrait"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:src="@drawable/movelist_powercrush"
+        android:layout_below="@+id/imageView3"
+        android:layout_toEndOf="@id/playerPortrait"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/playerPortrait"
+        android:layout_marginLeft="5dp" />
 
 </RelativeLayout>

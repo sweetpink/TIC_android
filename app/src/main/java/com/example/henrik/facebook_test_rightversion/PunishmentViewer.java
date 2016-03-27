@@ -12,11 +12,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,10 +41,14 @@ public class PunishmentViewer extends AppCompatActivity {
     private String playerCharacter = "";
     private String opponentCharacter = "";
 
-    private ArrayList<Move> playerPunishList = new ArrayList<>();
+    private ArrayList<String> playerPunishList = new ArrayList<>();
     private ArrayList<Move> opponentMovelist = new ArrayList<>();
     private List<String> mLines = new ArrayList<>();
 
+    private TextView punishDisplay;
+    private TextView punishersAre;
+
+    private boolean firstBoot = true;
 //------------------------------------------ON START-UP-------------------------------------------\\
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +62,12 @@ public class PunishmentViewer extends AppCompatActivity {
 
         frameSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                createTableRows();
+                if(!firstBoot) {
+                    createTableRows();
+                    refreshPunishers(frameSelector.getSelectedItemPosition());
+                }
+
+                firstBoot = false;
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -70,11 +82,14 @@ public class PunishmentViewer extends AppCompatActivity {
                 createTableRows();
             }
         });
+        punishDisplay = (TextView) findViewById(R.id.punishDisplay);
+        punishersAre = (TextView) findViewById(R.id.punishersAre);
 
         createTableHeaders();
 
         ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, R.layout.custom_spinner, arraySpinner);
         frameSelector.setAdapter(listAdapter);
+
     }
 
 //---------------------------------------PRIVATE METHODS------------------------------------------\\
@@ -97,7 +112,8 @@ public class PunishmentViewer extends AppCompatActivity {
 
     private void readFile(String fileName){
         AssetManager am = getAssets();
-        String filePath = "Movelists/" + fileName + ".txt";
+        String filePath = fileName + ".txt";
+        mLines.clear();
 
         try {
             InputStream is = am.open(filePath);
@@ -356,19 +372,38 @@ public class PunishmentViewer extends AppCompatActivity {
 
     public void setPlayerCharacter(String selectedPlayer){
         playerCharacter = selectedPlayer;
+        readFile("Punishers/" + playerCharacter);
+
+
+        playerPunishList.clear();
+        for(int i = 0; i < mLines.size(); i++) {
+            playerPunishList.add(mLines.get(i));
+        }
+
+        refreshPunishers(frameSelector.getSelectedItemPosition());
+    }
+
+    private void refreshPunishers(int id){
+        String replacementString = playerPunishList.get(id).replaceAll("crlf", "\r\n");
+
+
+        punishDisplay.setText(replacementString);
+
+
+        punishersAre.setVisibility(View.VISIBLE);
+
     }
 
     public void setOpponentCharacter(String selectedOpponent){
         opponentCharacter = selectedOpponent;
 
         opponentMovelist.clear();
-        readFile(opponentCharacter);
+        readFile("Movelists/" + opponentCharacter);
 
         for(int i = 0; i < mLines.size(); i+=10){
             opponentMovelist.add(new Move("", mLines.get(i), mLines.get(i + 1), mLines.get(i + 2), mLines.get(i + 3), mLines.get(i + 4), mLines.get(i + 5), mLines.get(i + 6), mLines.get(i + 7), mLines.get(i + 8)));
         }
 
-        mLines.clear();
         createTableRows();
     }
 

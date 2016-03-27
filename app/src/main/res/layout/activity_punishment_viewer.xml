@@ -18,13 +18,14 @@
         android:id="@+id/playerPortrait"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:onClick="playerPortraitClicked" />
+        android:onClick="playerPortraitClicked"
+        android:src="@drawable/character_unknown" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/opponentPortrait"
-        android:src="@drawable/character_dragunov"
+        android:src="@drawable/character_unknown"
         android:layout_alignTop="@+id/playerPortrait"
         android:layout_alignParentEnd="true"
         android:onClick="opponentPortraitClicked"
@@ -34,20 +35,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/frameSelector"
-        android:layout_alignTop="@+id/playerPortrait"
-        android:layout_toEndOf="@+id/playerPortrait"
-        android:layout_alignParentStart="false"
-        android:layout_toStartOf="@+id/opponentPortrait"
         android:gravity="center"
         android:textColor="#D9D9D9"
-         />
+        android:layout_alignParentTop="true"
+        android:popupBackground="#800F0F0F"
+        android:layout_toEndOf="@+id/playerPortrait"
+        android:layout_toStartOf="@+id/opponentPortrait"
+        android:layout_marginLeft="6dp" />
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontalScrollView"
         android:layout_below="@+id/playerPortrait"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -67,7 +69,7 @@
 
                 <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/rowLayout"/>
             </ScrollView>
         </LinearLayout>
@@ -76,10 +78,38 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specific punishment"
+        android:text="Specific Frame"
         android:id="@+id/specificBox"
+        android:textColor="#D9D9D9"
+        android:buttonTint="#2E2E2E"
         android:layout_below="@+id/frameSelector"
-        android:layout_alignEnd="@+id/frameSelector" />
+        android:layout_toRightOf="@+id/playerPortrait"
+        android:layout_toEndOf="@+id/playerPortrait"
+        android:layout_marginLeft="-3dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your punishers:"
+        android:id="@+id/punishersAre"
+        android:textSize="14dp"
+        android:textIsSelectable="false"
+        android:layout_below="@+id/playerPortrait"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#D9D9D9"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/punishDisplay"
+        android:textSize="14dp"
+        android:textIsSelectable="false"
+        android:layout_below="@+id/playerPortrait"
+        android:layout_toRightOf="@+id/playerPortrait"
+        android:layout_toEndOf="@+id/playerPortrait"
+        android:textColor="#D9D9D9" />
 
 </RelativeLayout>
 
