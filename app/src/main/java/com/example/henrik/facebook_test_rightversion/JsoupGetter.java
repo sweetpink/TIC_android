@@ -57,7 +57,7 @@ public class JsoupGetter extends AsyncTask<Object, Void,List<String>> {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext);
         SharedPreferences.Editor prefEditor = preferences.edit();
         prefEditor.putString("Tour1Name",nameArray.get(0));
-        prefEditor.putString("Tour1Date", dateArray.get(1));
+        prefEditor.putString("Tour1Date", dateArray.get(0));
         prefEditor.commit();
     }
 

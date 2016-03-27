@@ -57,10 +57,6 @@ public class Facebook_Fragment extends Fragment {
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
         mCallbackManager=CallbackManager.Factory.create();
 
-
-
-
-
     }
 
     @Override
@@ -111,6 +107,8 @@ public class Facebook_Fragment extends Fragment {
         TextView text_details = (TextView)getView().findViewById(R.id.text_details);
         text_details.setText(message);
     }
+
+
     /*
 
     Track Access Tokens
