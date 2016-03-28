@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -59,6 +60,8 @@ public class BasicsFragment extends Fragment {
             }
         });
 
+        ArrayAdapter<CharSequence> listAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.uploaders_array, R.layout.custom_spinner);
+        spinner.setAdapter(listAdapter);
     }
 
     public void fillList(){

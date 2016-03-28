@@ -1,6 +1,7 @@
 package com.example.henrik.facebook_test_rightversion;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Minkan on 2016-03-23.
- */
 public class TutorialAdapter extends ArrayAdapter<TutorialObject> {
 
     public TutorialAdapter(Context context, ArrayList<TutorialObject> tut) {
@@ -29,6 +27,15 @@ public class TutorialAdapter extends ArrayAdapter<TutorialObject> {
 
         title.setText(getItem(position).getTitle());
         img.setImageResource(getItem(position).getImg());
+
+        if ((position % 2) == 0) {
+            // number is even
+            customView.setBackgroundColor(Color.parseColor("#801C1C1C"));
+        }
+        else{
+            // number is odd
+            customView.setBackgroundColor(Color.parseColor("#800F0F0F"));
+        }
 
         return customView;
     }

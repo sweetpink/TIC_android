@@ -11,8 +11,8 @@
         android:id="@+id/upploaderChoice"
         android:layout_gravity="center_horizontal"
         android:spinnerMode="dropdown"
-        android:entries="@array/uploaders_array"
-        android:prompt="@string/choice_prompt"/>
+        android:prompt="@string/choice_prompt"
+        android:popupBackground="#800F0F0F" />
 
     <ListView
         android:layout_width="match_parent"
