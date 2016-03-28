@@ -54,13 +54,8 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void facebookButton(View view){
-        /*Intent intent = new Intent(MainMenu.this, Facebook.class);     //Lägg till rätt namn för changelogg Klassen
-        startActivity(intent);*/
-
         Facebook_Fragment fragment = new Facebook_Fragment();
         createYourFragment(fragment);
-
-
     }
 
     public void youtubeButton(View view){
@@ -80,10 +75,13 @@ public class MainMenu extends AppCompatActivity {
         intent.setData(Uri.parse("https://www.patreon.com/"));
         startActivity(intent);
     }
+    public void doNothing(View view){
+        //Används i facebookfragment så att knappar som ligger i underliggande activity inte är aktiva i fragmentet.
+    }
     private void createYourFragment(Fragment fragmentName) {
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.main, fragmentName);
+        transaction.replace(R.id.main, fragmentName).addToBackStack("tag");
         transaction.commit();
     }
     private void alarmChecker(){    //Ska ligga i main menu eftersom den ska startas när appen startar!!!!

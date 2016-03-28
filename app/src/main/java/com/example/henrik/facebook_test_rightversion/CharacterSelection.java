@@ -60,20 +60,7 @@ public class CharacterSelection extends Fragment {
                 ((MovelistViewer)getActivity()).setPlayerCharacter(characterNames[id]);
                 break;
         }
-        /*
-        if(imagePressed.equals("player")){
-            newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
-            ((PunishmentViewer)getActivity()).setPlayerCharacter(characterNames[id]);
-        }
-        else if(imagePressed.equals("opponent")){
-            newCharacter = (ImageView)getActivity().findViewById(R.id.opponentPortrait);
-            ((PunishmentViewer)getActivity()).setOpponentCharacter(characterNames[id]);
-        }
-        else if(imagePressed.equals("movelist")){
-            newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
-            ((MovelistViewer)getActivity()).setPlayerCharacter(characterNames[id]);
-        }
-*/
+
         newCharacter.setImageResource(characterPortraits[id]);
     }
 }
