@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
-/**
- * Created by Sweetpink on 2016-03-06.
- */
+
 public class Ranking  extends AppCompatActivity {
 
     //integer array med r drawable

@@ -12,6 +12,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,6 +34,9 @@ public class MovelistViewer extends AppCompatActivity {
     private String playerCharacter;
     TableRow[] tableRows;
     TableLayout secondaryTable;
+    TextView rageArtDisplay;
+    TextView rageComboDisplay;
+    TextView powerCrushDisplay;
     int color = 0;
 
     @Override
@@ -45,6 +50,9 @@ public class MovelistViewer extends AppCompatActivity {
         launchers = (CheckBox) findViewById(R.id.launchersBox);
         grabs  = (CheckBox) findViewById(R.id.grabsBox);
         tailspins = (CheckBox) findViewById(R.id.tailspinsBox);
+        rageArtDisplay = (TextView) findViewById(R.id.rageArtDisplay);
+        rageComboDisplay = (TextView) findViewById(R.id.rageComboDisplay);
+        powerCrushDisplay = (TextView) findViewById(R.id.powerCrushDisplay);
 
         createTableHeaders();
         createFragment();
@@ -74,13 +82,14 @@ public class MovelistViewer extends AppCompatActivity {
     public void setPlayerCharacter(String selectedCharacter){
         playerCharacter = selectedCharacter;
         playerMovelist.clear();
-        readFile(playerCharacter);
+        readFile("Movelists/" + playerCharacter);
 
         for(int i = 0; i < mLines.size(); i+=10){
             playerMovelist.add(new Move("", mLines.get(i), mLines.get(i + 1), mLines.get(i + 2), mLines.get(i + 3), mLines.get(i + 4), mLines.get(i + 5), mLines.get(i + 6), mLines.get(i + 7), mLines.get(i + 8)));
         }
 
-        mLines.clear();
+        readFile("Specials/" + playerCharacter);
+        setSpecialNotations();
         createTableRows();
     }
 
@@ -275,7 +284,8 @@ public class MovelistViewer extends AppCompatActivity {
 
     private void readFile(String fileName){
         AssetManager am = getAssets();
-        String filePath = "Movelists/" + fileName + ".txt";
+        String filePath = fileName + ".txt";
+        mLines.clear();
 
         try {
             InputStream is = am.open(filePath);
@@ -333,6 +343,12 @@ public class MovelistViewer extends AppCompatActivity {
                 counter++;
             }
         }
+    }
+
+    private void setSpecialNotations(){
+        rageArtDisplay.setText(mLines.get(0));
+        rageComboDisplay.setText(mLines.get(1));
+        powerCrushDisplay.setText(mLines.get(2));
     }
 }
 

@@ -8,22 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-/**
- * Created by Minkan on 2016-03-23.
- */
 public class SpecificsFragment extends Fragment {
 
-    ArrayList<TutorialObject> list = new ArrayList();
-    ArrayList<TutorialObject> sortedList = new ArrayList();
-    Spinner spinner;
+    private ArrayList<TutorialObject> list = new ArrayList();
+    private ArrayList<TutorialObject> sortedList = new ArrayList();
+    private Spinner spinner;
 
-    ListAdapter adapter;
+    private ListAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +56,9 @@ public class SpecificsFragment extends Fragment {
 
             }
         });
+
+        ArrayAdapter<CharSequence> listAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.uploaders_array, R.layout.custom_spinner);
+        spinner.setAdapter(listAdapter);
 
     }
 

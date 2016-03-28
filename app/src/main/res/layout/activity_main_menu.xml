@@ -48,7 +48,8 @@
         android:layout_toRightOf="@+id/facebookButton"
         android:layout_toEndOf="@+id/facebookButton"
         android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp" />
+        android:layout_marginStart="25dp"
+        android:onClick="twitterButton" />
 
     <ImageButton
         android:layout_width="wrap_content"

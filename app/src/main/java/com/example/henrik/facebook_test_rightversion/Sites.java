@@ -7,11 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-/**
- * Created by Minkan on 2016-03-23.
- *
- *
- */
+
 public class Sites extends AppCompatActivity {
 
     @Override

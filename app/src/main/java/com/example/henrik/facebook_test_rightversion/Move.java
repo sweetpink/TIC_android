@@ -1,8 +1,6 @@
 package com.example.henrik.facebook_test_rightversion;
 
-/**
- * Created by Nicklas on 2016-03-20.
- */
+
 public class Move {
     String characterName;
     String command;

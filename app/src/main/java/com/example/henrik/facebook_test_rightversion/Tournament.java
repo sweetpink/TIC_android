@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 
-/**
- * Created by Henrik on 2016-03-24.
- */
 
 public class Tournament extends AppCompatActivity {
     private static Context contextOfApplication;
@@ -25,7 +22,7 @@ public class Tournament extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.w("asd", "kunde inte läsa in");
+            Log.w("Tour23", "kunde inte läsa in");
         }
     }
     private void createTournamentList(){

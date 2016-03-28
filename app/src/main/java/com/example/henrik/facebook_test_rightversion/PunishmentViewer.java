@@ -359,6 +359,17 @@ public class PunishmentViewer extends AppCompatActivity {
 
     }
 
+    private void refreshPunishers(int id){
+        String replacementString = playerPunishList.get(id).replaceAll("crlf", "\r\n");
+
+
+        punishDisplay.setText(replacementString);
+
+
+        punishersAre.setVisibility(View.VISIBLE);
+
+    }
+
 //-------------------------------------PUBLIC METHODS---------------------------------------------\\
     public void playerPortraitClicked(View view){
         String imagePressed = "player";
@@ -381,17 +392,6 @@ public class PunishmentViewer extends AppCompatActivity {
         }
 
         refreshPunishers(frameSelector.getSelectedItemPosition());
-    }
-
-    private void refreshPunishers(int id){
-        String replacementString = playerPunishList.get(id).replaceAll("crlf", "\r\n");
-
-
-        punishDisplay.setText(replacementString);
-
-
-        punishersAre.setVisibility(View.VISIBLE);
-
     }
 
     public void setOpponentCharacter(String selectedOpponent){

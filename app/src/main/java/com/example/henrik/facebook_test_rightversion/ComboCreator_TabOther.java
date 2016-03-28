@@ -7,11 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 
-/**
- * Created by Sweetpink on 2016-03-26.
- */
 public class ComboCreator_TabOther extends AppCompatActivity{
 
 

@@ -11,9 +11,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
-/**
- * Created by Henrik on 2016-03-23.
- */
+
 public class GetHashCode extends Application {        //Klass bara för att få fram hashkod. Kommer inte att användas mer än det.
 
     public void onCreate(){
@@ -24,6 +22,7 @@ public class GetHashCode extends Application {        //Klass bara för att få 
             e.printStackTrace();
         }
     }
+
     public void printHashKey() throws NoSuchAlgorithmException {
         try{
             PackageInfo info = getPackageManager().getPackageInfo("com.example.henrik.facebook_test_rightversion", PackageManager.GET_SIGNATURES);
@@ -31,10 +30,7 @@ public class GetHashCode extends Application {        //Klass bara för att få 
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
                 Log.d("Se hit:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-                System.out.println("testför github");
             }
-
-
 
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

@@ -1,13 +1,12 @@
 package com.example.henrik.facebook_test_rightversion;
 
-import android.support.v7.app.AppCompatActivity;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,9 +15,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Sweetpink on 2016-03-25.
- */
+
 public class ComboCreator_TabMoveList extends AppCompatActivity {
 
     List<String> mLines = new ArrayList<>();

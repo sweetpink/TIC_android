@@ -1,8 +1,6 @@
 package com.example.henrik.facebook_test_rightversion;
 
-/**
- * Created by Minkan on 2016-03-23.
- */
+
 public class TutorialObject {
     private String title;
 

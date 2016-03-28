@@ -7,9 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-/**
- * Created by Sweetpink on 2016-03-19.
- */
+
 public class Ranking_ImageListAdapter extends BaseAdapter {
     private Context mContext;
 
