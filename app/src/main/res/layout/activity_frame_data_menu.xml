@@ -14,21 +14,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
-        android:layout_marginTop="87dp"
-        android:src="@drawable/submenu_movelist"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="154dp"
+        android:src="@drawable/mainmenu_framedata_button"
         android:background="#00ffffff"
-        android:onClick="frameDataPressed" />
+        android:onClick="frameDataPressed"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton2"
-        android:layout_marginTop="86dp"
-        android:layout_below="@+id/imageButton"
-        android:layout_centerHorizontal="true"
         android:background="#00ffffff"
-        android:src="@drawable/submenu_punishment"
-        android:onClick="punishmentPressed" />
+        android:src="@drawable/framedata_punishment_button"
+        android:onClick="punishmentPressed"
+        android:layout_below="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton" />
 </RelativeLayout>

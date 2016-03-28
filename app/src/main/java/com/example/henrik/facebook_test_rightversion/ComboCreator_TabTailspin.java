@@ -3,6 +3,7 @@ package com.example.henrik.facebook_test_rightversion;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,7 @@ public class ComboCreator_TabTailspin extends AppCompatActivity{
     ArrayList<Move> chosenCharMoveList = new ArrayList<>();
     String selectedFromList;
     String playermadeCombo = "";
+    String playerCharacter;
 
 
     @Override
@@ -33,12 +35,12 @@ public class ComboCreator_TabTailspin extends AppCompatActivity{
 
         ArrayList<String> moveList = new ArrayList<>();
 
-        readFile("kazuya");
+        readFile(ComboCreator.getPlayerCharacter());
 
         for(int i = 0; i < chosenCharMoveList.size(); i++) {
-
-            if (chosenCharMoveList.get(i).getPrimaryAttr() == "Tailspin") {
-                moveList.add(chosenCharMoveList.get(i).getPrimaryAttr());
+            Log.d("bllab", chosenCharMoveList.get(i).getPrimaryAttr());
+            if (chosenCharMoveList.get(i).getPrimaryAttr().equals("Tailspin")) {
+                moveList.add(chosenCharMoveList.get(i).getCommand());
             }
         }
 
@@ -85,8 +87,13 @@ public class ComboCreator_TabTailspin extends AppCompatActivity{
 
     private void updateComboShower(String addedMove){
         playermadeCombo = ComboCreator.getChosenComboTV();
-        playermadeCombo += " + " + addedMove;
+        playermadeCombo += " , " + addedMove;
         ComboCreator.setchosenComboTV(playermadeCombo);
 
+    }
+
+    public void setPlayerCharacter(String selectedCharacter) {
+        playerCharacter = selectedCharacter;
+        readFile(playerCharacter);
     }
 }

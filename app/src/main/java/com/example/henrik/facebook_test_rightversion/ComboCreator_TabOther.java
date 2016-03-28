@@ -42,7 +42,7 @@ public class ComboCreator_TabOther extends AppCompatActivity{
 
     private void updateComboShower(String addedMove){
         playermadeCombo = ComboCreator.getChosenComboTV();
-        playermadeCombo += " + " + addedMove;
+        playermadeCombo += " , " + addedMove;
         ComboCreator.setchosenComboTV(playermadeCombo);
 
     }

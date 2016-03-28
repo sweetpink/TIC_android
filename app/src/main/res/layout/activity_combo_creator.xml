@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:id="@+id/mainContainer">
 
     <TabHost
         android:layout_marginTop="250dp"
@@ -65,8 +66,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:clickable="true"
-        android:enabled="true"
-        android:onClick="saveButton" />
+        android:enabled="false"
+        android:onClick="saveButton"
+        android:visibility="invisible" />
 
     <Button
         android:layout_width="wrap_content"
@@ -76,8 +78,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:onClick="viewButton"
-        android:enabled="true"
-        android:clickable="true" />
+        android:enabled="false"
+        android:clickable="true"
+        android:visibility="invisible" />
 
     <EditText
         android:layout_width="60dp"

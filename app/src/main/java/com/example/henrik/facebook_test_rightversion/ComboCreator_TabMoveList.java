@@ -25,8 +25,7 @@ public class ComboCreator_TabMoveList extends AppCompatActivity {
     ArrayList<Move> chosenCharMoveList = new ArrayList<>();
     String selectedFromList;
     String playermadeCombo = "";
-
-
+    String playerCharacter;
 
 
     @Override
@@ -36,7 +35,7 @@ public class ComboCreator_TabMoveList extends AppCompatActivity {
 
         ArrayList<String> moveList = new ArrayList<>();
 
-        readFile("kazuya");
+        readFile(ComboCreator.getPlayerCharacter());
 
         for(int i = 0; i < chosenCharMoveList.size(); i++){
             moveList.add(chosenCharMoveList.get(i).getCommand());
@@ -86,9 +85,15 @@ public class ComboCreator_TabMoveList extends AppCompatActivity {
 
     private void updateComboShower(String addedMove){
         playermadeCombo = ComboCreator.getChosenComboTV();
-        playermadeCombo += " + " + addedMove;
+        playermadeCombo += " , " + addedMove;
         ComboCreator.setchosenComboTV(playermadeCombo);
 
+    }
+
+    public void setPlayerCharacter(String selectedCharacter) {
+        playerCharacter = selectedCharacter;
+
+        readFile(playerCharacter);
     }
 
 }

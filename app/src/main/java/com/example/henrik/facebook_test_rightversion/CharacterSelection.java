@@ -23,7 +23,7 @@ public class CharacterSelection extends Fragment {
         imagePressed = this.getArguments().getString("imagePressed");
 
         infoText = (TextView) view.findViewById(R.id.infoText);
-        if(imagePressed.equals("player") || imagePressed.equals("movelist")){
+        if(imagePressed.equals("player") || imagePressed.equals("movelist") || imagePressed.equals("combocreator")){
             infoText.setText("Select your character:");
         }
         else if(imagePressed.equals("opponent")){
@@ -50,17 +50,23 @@ public class CharacterSelection extends Fragment {
             case "player":
                 newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
                 ((PunishmentViewer)getActivity()).setPlayerCharacter(characterNames[id]);
+                newCharacter.setImageResource(characterPortraits[id]);
                 break;
             case "opponent":
                 newCharacter = (ImageView)getActivity().findViewById(R.id.opponentPortrait);
                 ((PunishmentViewer)getActivity()).setOpponentCharacter(characterNames[id]);
+                newCharacter.setImageResource(characterPortraits[id]);
                 break;
             case "movelist":
                 newCharacter = (ImageView)getActivity().findViewById(R.id.playerPortrait);
                 ((MovelistViewer)getActivity()).setPlayerCharacter(characterNames[id]);
+                newCharacter.setImageResource(characterPortraits[id]);
+                break;
+            case "combocreator":
+                ((ComboCreator)getActivity()).setPlayerCharacter(characterNames[id]);
+                ((ComboCreator)getActivity()).createTabs();
                 break;
         }
-
-        newCharacter.setImageResource(characterPortraits[id]);
     }
+
 }
