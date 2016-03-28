@@ -28,6 +28,10 @@
         <activity android:name=".Sites"></activity>
         <activity android:name=".ComboCreator"></activity>
         <activity android:name=".ComboCreator_TabMoveList"></activity>
+        <activity android:name=".ComboCreatorViewCombo"></activity>
+        <activity android:name=".ComboCreator_TabOther"></activity>
+        <activity android:name=".ComboCreator_TabTailspin"></activity>
+
 
 
     <activity android:name="com.facebook.FacebookActivity"

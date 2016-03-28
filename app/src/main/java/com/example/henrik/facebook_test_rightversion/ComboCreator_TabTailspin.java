@@ -1,13 +1,12 @@
 package com.example.henrik.facebook_test_rightversion;
 
-import android.support.v7.app.AppCompatActivity;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,16 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Sweetpink on 2016-03-25.
+ * Created by Sweetpink on 2016-03-26.
  */
-public class ComboCreator_TabMoveList extends AppCompatActivity {
+public class ComboCreator_TabTailspin extends AppCompatActivity{
 
     List<String> mLines = new ArrayList<>();
     ArrayList<Move> chosenCharMoveList = new ArrayList<>();
     String selectedFromList;
     String playermadeCombo = "";
-
-
 
 
     @Override
@@ -38,10 +35,12 @@ public class ComboCreator_TabMoveList extends AppCompatActivity {
 
         readFile("kazuya");
 
-        for(int i = 0; i < chosenCharMoveList.size(); i++){
-            moveList.add(chosenCharMoveList.get(i).getCommand());
-        }
+        for(int i = 0; i < chosenCharMoveList.size(); i++) {
 
+            if (chosenCharMoveList.get(i).getPrimaryAttr() == "Tailspin") {
+                moveList.add(chosenCharMoveList.get(i).getPrimaryAttr());
+            }
+        }
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.combocreator_tabmovelist_item, moveList);
 
@@ -51,9 +50,10 @@ public class ComboCreator_TabMoveList extends AppCompatActivity {
 
 
 
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
-                selectedFromList =(String) (listView.getItemAtPosition(myItemInt));
+                selectedFromList = (String) (listView.getItemAtPosition(myItemInt));
                 updateComboShower(selectedFromList);
 
             }
@@ -83,12 +83,10 @@ public class ComboCreator_TabMoveList extends AppCompatActivity {
 
     }
 
-
     private void updateComboShower(String addedMove){
         playermadeCombo = ComboCreator.getChosenComboTV();
         playermadeCombo += " + " + addedMove;
         ComboCreator.setchosenComboTV(playermadeCombo);
 
     }
-
 }
