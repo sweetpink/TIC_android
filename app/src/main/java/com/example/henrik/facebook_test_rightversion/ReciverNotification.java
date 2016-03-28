@@ -26,7 +26,8 @@ public class ReciverNotification extends BroadcastReceiver {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
         notificationBuilder.setContentTitle("En turnering startar om 24 timmar!");
         notificationBuilder.setContentText("Dags för:    " + tournamentName);
-
+        notificationBuilder.setContentIntent(PendingIntent.getActivity(context, 0, new Intent(), 0));
+        notificationBuilder.setAutoCancel(true);
         notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
 
         //Kod för att kunna öppna activity vid notification click.
@@ -43,7 +44,7 @@ public class ReciverNotification extends BroadcastReceiver {
     private void checkIfTimeToNotify(Context context) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date currentDate = new Date();
-
+        //2016-04-02 -- dateFormat.format(currentDate)
         SharedPreferences preferencesGetter = PreferenceManager.getDefaultSharedPreferences(context);
         Log.d("Tour Date", preferencesGetter.getString("Tour1Date", "default"));
         if(preferencesGetter.getString("Tour1Date","0000-00-00").equals(dateFormat.format(currentDate))) {  //Ändra från dateformat till samma datum som turneringen för att visa upp notification.
