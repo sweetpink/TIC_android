@@ -17,10 +17,7 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         alarmChecker();
-        System.out.print("Ändrat nicklas");
     }
-
-
 
     public void frameDataButton(View view){
         Intent intent = new Intent(MainMenu.this, FrameDataMenu.class);   //Lägg till rätt namn för frameData Klassen
@@ -29,7 +26,6 @@ public class MainMenu extends AppCompatActivity {
 
     public void rankingButton(View view){
         Intent intent = new Intent(MainMenu.this, Ranking.class);     //Lägg till rätt namn för Rankings Klassen
-
         startActivity(intent);
     }
 
@@ -59,31 +55,28 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void youtubeButton(View view){
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://www.youtube.com/user/ashens"));
-        startActivity(intent);
+        createWebIntent("https://www.youtube.com/user/ashens");
     }
 
     public void twitterButton(View view){
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://twitter.com/tic_app"));
-        startActivity(intent);
+        createWebIntent("https://twitter.com/tic_app");
     }
 
     public void patreonButton(View view){
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://www.patreon.com/"));
-        startActivity(intent);
+        createWebIntent("https://www.patreon.com/");
     }
+
     public void doNothing(View view){
         //Används i facebookfragment så att knappar som ligger i underliggande activity inte är aktiva i fragmentet.
     }
+
     private void createYourFragment(Fragment fragmentName) {
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.main, fragmentName).addToBackStack("tag");
         transaction.commit();
     }
+
     private void alarmChecker(){    //Ska ligga i main menu eftersom den ska startas när appen startar!!!!
         Log.d("432", "AlarmChecker");
         Intent notifyIntent = new Intent(MainMenu.this, ReciverNotification.class);
@@ -93,6 +86,10 @@ public class MainMenu extends AppCompatActivity {
         Log.d("432", "AlarmChecker");
     }
 
-
+    private void createWebIntent(String url){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
 }
 
