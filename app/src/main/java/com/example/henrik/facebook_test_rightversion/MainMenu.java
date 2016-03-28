@@ -47,6 +47,7 @@ public class MainMenu extends AppCompatActivity {
     public void tournamentButton(View view){
         Intent intent = new Intent(MainMenu.this, Tournament.class);     //Lägg till rätt namn för changelogg Klassen
         startActivity(intent);
+        System.out.print("mep");
     }
 
     public void facebookButton(View view){

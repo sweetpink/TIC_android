@@ -33,30 +33,7 @@ public class ComboCreator extends TabActivity {
 
         createFragment();
 
-        /*chosenComboTV = (TextView) findViewById(R.id.chosenComboTextView);
-        damageET = (EditText) findViewById(R.id.damageET);
-        tabHost = (TabHost) findViewById(android.R.id.tabhost);
 
-        TabSpec tabMoveList = tabHost.newTabSpec("MoveList");
-        TabSpec tabTailSpins = tabHost.newTabSpec("Tailspins");
-        TabSpec tabOther = tabHost.newTabSpec("Other");
-
-        tabMoveList.setIndicator("Moves");
-        tabMoveList.setContent(new Intent(this, ComboCreator_TabMoveList.class));
-
-        tabOther.setIndicator("Tailspins");
-        tabOther.setContent(new Intent(this, ComboCreator_TabTailspin.class));
-
-        tabTailSpins.setIndicator("Other");
-        tabTailSpins.setContent(new Intent(this, ComboCreator_TabOther.class));
-
-
-        tabHost.addTab(tabMoveList);
-        tabHost.addTab(tabTailSpins);
-        tabHost.addTab(tabOther);
-
-        System.out.println("ta bort denna sen");
-        */
     }
 
     public static void setchosenComboTV(String stringToDisplay){
