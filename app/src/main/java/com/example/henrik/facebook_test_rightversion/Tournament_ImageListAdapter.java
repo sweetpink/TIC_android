@@ -12,9 +12,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by Henrik on 2016-03-24.
- */
+
 public class Tournament_ImageListAdapter extends ArrayAdapter {
     private Context context;
     private LayoutInflater inflater;
@@ -50,8 +48,6 @@ public class Tournament_ImageListAdapter extends ArrayAdapter {
                 .load(imageUrlsLogo.get(position))
                 .fit()
                 .into((ImageView) convertView.findViewById(R.id.logo));
-
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         TextView nameTextview = (TextView) convertView.findViewById(R.id.result_name);
         nameTextview.setText(title.get(position));

@@ -2,15 +2,12 @@ package com.example.henrik.facebook_test_rightversion;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-/**
- * Created by Minkan on 2016-03-23.
- */
+
 public class Tutorials extends FragmentActivity{
     FragmentManager fragmentManager = getFragmentManager();
 

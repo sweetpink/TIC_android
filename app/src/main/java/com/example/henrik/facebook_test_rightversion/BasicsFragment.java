@@ -15,9 +15,7 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-/**
- * Created by Minkan on 2016-03-23.
- */
+
 public class BasicsFragment extends Fragment {
 
     ArrayList<TutorialObject> list = new ArrayList();

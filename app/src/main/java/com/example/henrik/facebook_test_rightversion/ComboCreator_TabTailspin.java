@@ -15,9 +15,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Sweetpink on 2016-03-26.
- */
+
 public class ComboCreator_TabTailspin extends AppCompatActivity{
 
     List<String> mLines = new ArrayList<>();

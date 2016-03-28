@@ -2,7 +2,6 @@ package com.example.henrik.facebook_test_rightversion;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -12,9 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-/**
- * Created by Sweetpink on 2016-03-25.
- */
+
 public class ComboCreatorViewCombo extends AppCompatActivity{
     ArrayList<String> inputArray;
 

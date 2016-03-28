@@ -14,9 +14,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Henrik on 2016-03-13.
- */
 public class ReciverNotification extends BroadcastReceiver {
 
     @Override
@@ -46,10 +43,9 @@ public class ReciverNotification extends BroadcastReceiver {
     private void checkIfTimeToNotify(Context context) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date currentDate = new Date();
-        System.out.println("test  " + dateFormat.format(currentDate));
 
         SharedPreferences preferencesGetter = PreferenceManager.getDefaultSharedPreferences(context);
-        Log.d("Se", preferencesGetter.getString("Tour1Date", "default"));
+        Log.d("Tour Date", preferencesGetter.getString("Tour1Date", "default"));
         if(preferencesGetter.getString("Tour1Date","0000-00-00").equals(dateFormat.format(currentDate))) {  //Ändra från dateformat till samma datum som turneringen för att visa upp notification.
             createNotify(preferencesGetter.getString("Tour1Name","DefaultName"),context);
         }
