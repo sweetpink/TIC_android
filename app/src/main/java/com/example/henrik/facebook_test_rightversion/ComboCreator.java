@@ -52,6 +52,8 @@ public class ComboCreator extends TabActivity {
         tabHost.addTab(tabTailSpins);
         tabHost.addTab(tabOther);
 
+        System.out.println("ta bort denna sen");
+
     }
 
     public static void setchosenComboTV(String stringToDisplay){
