@@ -15,40 +15,36 @@
         android:layout_height="wrap_content"
         android:id="@+id/siteButton"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:src="@drawable/sites_tz"
+        android:background="#00ffffff" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/siteButton2"
-        android:layout_alignTop="@+id/siteButton"
-        android:layout_alignLeft="@+id/siteButton5"
-        android:layout_alignStart="@+id/siteButton5"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/siteButton3"
+        android:src="@drawable/sites_rbn"
+        android:background="#00ffffff"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/siteButton4"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:src="@drawable/sites_atp"
+        android:background="#00ffffff" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/siteButton5"
         android:layout_alignBottom="@+id/siteButton4"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/sites_luyg"
+        android:background="#00ffffff" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -56,119 +52,126 @@
         android:id="@+id/siteButton6"
         android:layout_alignBottom="@+id/siteButton5"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#00ffffff"
+        android:src="@drawable/sites_w" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/siteButton7"
+        android:layout_marginBottom="53dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="80dp" />
+        android:layout_toStartOf="@+id/textView2"
+        android:src="@drawable/sites_harada"
+        android:background="#00ffffff" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/siteButton8"
         android:layout_alignTop="@+id/siteButton7"
-        android:layout_alignLeft="@+id/siteButton5"
+        android:layout_toEndOf="@+id/textView2"
+        android:background="#00ffffff"
+        android:src="@drawable/sites_twitch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tekken Zaibatsu"
+        android:id="@+id/textView"
+        android:textColor="#D9D9D9"
+        android:layout_below="@+id/siteButton"
+        android:layout_alignEnd="@+id/siteButton"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Rbnorway"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/siteButton2"
+        android:layout_centerHorizontal="true"
+        android:textColor="#D9D9D9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="TekkenDB"
+        android:id="@+id/textView3"
+        android:textColor="#D9D9D9"
+        android:layout_alignStart="@+id/siteButton3"
+        android:layout_below="@+id/siteButton3"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Flying Wonkey"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/siteButton6"
+        android:layout_alignRight="@+id/siteButton6"
+        android:layout_alignEnd="@+id/siteButton6"
+        android:textAlignment="center"
+        android:textColor="#D9D9D9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Level up your game"
+        android:id="@+id/textView5"
+        android:textAlignment="center"
+        android:textColor="#D9D9D9"
+        android:layout_alignEnd="@+id/siteButton5"
+        android:layout_below="@+id/siteButton5"
         android:layout_alignStart="@+id/siteButton5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Avoiding the puddle"
+        android:id="@+id/textView6"
+        android:textColor="#D9D9D9"
+        android:layout_below="@+id/siteButton4"
+        android:layout_alignEnd="@+id/textView"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tekken Twitch"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/siteButton8"
+        android:layout_alignEnd="@+id/siteButton8"
+        android:textColor="#D9D9D9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Harada"
+        android:id="@+id/textView9"
+        android:textColor="#D9D9D9"
+        android:layout_below="@+id/siteButton8"
+        android:layout_alignStart="@+id/siteButton7"
+        android:layout_alignEnd="@+id/siteButton7"
+        android:textAlignment="center" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/siteButton9"
-        android:layout_alignTop="@+id/siteButton8"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_alignEnd="@+id/textView4" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView"
-        android:layout_below="@+id/siteButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/siteButton2"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/siteButton3"
-        android:layout_alignRight="@+id/siteButton3"
-        android:layout_alignEnd="@+id/siteButton3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/siteButton6"
-        android:layout_alignRight="@+id/siteButton6"
-        android:layout_alignEnd="@+id/siteButton6" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView5"
-        android:layout_alignTop="@+id/textView6"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView6"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/siteButton8"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView8"
-        android:layout_below="@+id/siteButton9"
-        android:layout_alignRight="@+id/siteButton9"
-        android:layout_alignEnd="@+id/siteButton9" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView9"
-        android:layout_alignTop="@+id/textView7"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/siteButton3"
+        android:layout_alignTop="@+id/siteButton2"
+        android:layout_alignEnd="@+id/textView4"
+        android:background="#00ffffff"
+        android:src="@drawable/sites_tdb" />
 
 </RelativeLayout>

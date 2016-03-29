@@ -56,7 +56,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void youtubeButton(View view){
-        createWebIntent("https://www.youtube.com/user/ashens");
+        createWebIntent("https://www.youtube.com/channel/UCAI5B-cjPRUbbD1BUix4FqA");
     }
 
     public void twitterButton(View view){

@@ -23,14 +23,12 @@ public class Sites extends AppCompatActivity {
         ImageButton site6 = (ImageButton) findViewById(R.id.siteButton6);
         ImageButton site7 = (ImageButton) findViewById(R.id.siteButton7);
         ImageButton site8 = (ImageButton) findViewById(R.id.siteButton8);
-        ImageButton site9 = (ImageButton) findViewById(R.id.siteButton9);
-
 
         site.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("http://www.tekkenzaibatsu.com/"));
 
                 startActivity(i);
             }
@@ -40,7 +38,7 @@ public class Sites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("http://rbnorway.org/"));
 
                 startActivity(i);
             }
@@ -51,7 +49,7 @@ public class Sites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("http://tekkendb.com/"));
 
                 startActivity(i);
             }
@@ -62,7 +60,7 @@ public class Sites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("http://www.avoidingthepuddle.com/"));
 
                 startActivity(i);
             }
@@ -73,7 +71,7 @@ public class Sites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("http://www.levelupyourgame.com/"));
 
                 startActivity(i);
             }
@@ -84,7 +82,7 @@ public class Sites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("https://twitter.com/flying_wonkey"));
 
                 startActivity(i);
             }
@@ -95,7 +93,7 @@ public class Sites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("https://twitter.com/harada_tekken"));
 
                 startActivity(i);
             }
@@ -106,21 +104,11 @@ public class Sites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
+                i.setData(Uri.parse("http://www.twitch.tv/Tekken"));
 
                 startActivity(i);
             }
         });
 
-
-        site9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(""));
-
-                startActivity(i);
-            }
-        });
     }
 }
