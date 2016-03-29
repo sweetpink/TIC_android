@@ -1,0 +1,8 @@
+1,3(damage) or 2,1(frames)
+WS+4
+4,1 or d/f+4(range) crlfWS+1,3(damage) or WS+1,2(frames)
+d/f+1(-12f options are better)
+b+3 or f+4,4 or JF qcf+1+2
+d/f+2 crlfWS+2
+None
+f+1+2 or JF qcf+1 crlfIn WS: u/f,n,4
