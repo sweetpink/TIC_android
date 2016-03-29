@@ -19,7 +19,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:onClick="playerPortraitClicked"
-        android:src="@drawable/character_unknown" />
+        android:src="@drawable/character_unknown"
+        android:visibility="invisible" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
         android:layout_alignTop="@+id/playerPortrait"
         android:layout_alignParentEnd="true"
         android:onClick="opponentPortraitClicked"
-        android:nestedScrollingEnabled="false" />
+        android:nestedScrollingEnabled="false"
+        android:visibility="invisible" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -41,7 +43,8 @@
         android:popupBackground="#800F0F0F"
         android:layout_toEndOf="@+id/playerPortrait"
         android:layout_toStartOf="@+id/opponentPortrait"
-        android:layout_marginLeft="6dp" />
+        android:layout_marginLeft="6dp"
+        android:visibility="invisible" />
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -85,7 +88,8 @@
         android:layout_below="@+id/frameSelector"
         android:layout_toRightOf="@+id/playerPortrait"
         android:layout_toEndOf="@+id/playerPortrait"
-        android:layout_marginLeft="-3dp" />
+        android:layout_marginLeft="-3dp"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,29 +1,9 @@
-1,1,2
-h,h,m
-9,8,16
-10
-17
--17
-KND
-KND
+Test
+Test
+Test
+Test
+-19
+-19
+Test
+Test
 Normal
- 
-f, n, d/f+2
-h
-31
-11(13~)
-5
-+5
-Launch (JG?)
-Launch (JG?)
-Launcher
-
-f, n, d/f+2
-h
-31
-11(13~)
-17
-+17
-Launch (JG?)
-Launch (JG?)
-Poke

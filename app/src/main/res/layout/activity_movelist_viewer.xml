@@ -19,7 +19,8 @@
         android:onClick="playerPortraitClicked"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/character_unknown" />
+        android:src="@drawable/character_unknown"
+        android:visibility="invisible" />
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -63,7 +64,8 @@
         android:checked="true"
         android:clickable="false"
         android:onClick="checkBoxClicked"
-        android:buttonTint="#2E2E2E" />
+        android:buttonTint="#2E2E2E"
+        android:visibility="invisible" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -75,7 +77,8 @@
         android:layout_centerHorizontal="true"
         android:checked="true"
         android:onClick="checkBoxClicked"
-        android:buttonTint="#2E2E2E" />
+        android:buttonTint="#2E2E2E"
+        android:visibility="invisible" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -87,7 +90,8 @@
         android:layout_alignParentStart="true"
         android:checked="true"
         android:onClick="checkBoxClicked"
-        android:buttonTint="#2E2E2E" />
+        android:buttonTint="#2E2E2E"
+        android:visibility="invisible" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -99,7 +103,8 @@
         android:layout_alignStart="@+id/pokesBox"
         android:checked="true"
         android:onClick="checkBoxClicked"
-        android:buttonTint="#2E2E2E" />
+        android:buttonTint="#2E2E2E"
+        android:visibility="invisible" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -111,7 +116,8 @@
         android:onClick="checkBoxClicked"
         android:layout_above="@+id/tailspinsBox"
         android:layout_alignParentEnd="true"
-        android:buttonTint="#2E2E2E" />
+        android:buttonTint="#2E2E2E"
+        android:visibility="invisible" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -123,76 +129,80 @@
         android:layout_alignStart="@+id/goodBox"
         android:checked="true"
         android:onClick="checkBoxClicked"
-        android:buttonTint="#2E2E2E" />
+        android:buttonTint="#2E2E2E"
+        android:visibility="invisible" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
+        android:id="@+id/rageArtDrawable"
         android:src="@drawable/movelist_rageart"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@id/playerPortrait"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginLeft="5dp"
+        android:visibility="invisible" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView3"
+        android:id="@+id/rageComboDrawable"
         android:src="@drawable/movelist_ragecombo"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/rageArtDrawable"
         android:layout_toRightOf="@+id/playerPortrait"
         android:layout_toEndOf="@+id/playerPortrait"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginLeft="5dp"
+        android:visibility="invisible" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView4"
+        android:id="@+id/powerCrushDrawable"
         android:src="@drawable/movelist_powercrush"
-        android:layout_below="@+id/imageView3"
+        android:layout_below="@+id/rageComboDrawable"
         android:layout_toEndOf="@id/playerPortrait"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/playerPortrait"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginLeft="5dp"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="d/f+2"
         android:id="@+id/rageArtDisplay"
         android:textSize="14dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView4"
         android:textAlignment="center"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageView4" />
+        android:layout_toRightOf="@+id/powerCrushDrawable"
+        android:layout_alignStart="@+id/rageComboDisplay"
+        android:textColor="#D9D9D9" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="d/f+2"
         android:id="@+id/rageComboDisplay"
         android:textSize="14dp"
         android:textAlignment="center"
-        android:layout_above="@+id/imageView4"
+        android:layout_above="@+id/powerCrushDrawable"
         android:layout_toRightOf="@+id/tailspinsBox"
-        android:layout_alignTop="@+id/imageView3"
+        android:layout_alignTop="@+id/rageComboDrawable"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#D9D9D9" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="d/f+2"
         android:id="@+id/powerCrushDisplay"
         android:textSize="14dp"
         android:textAlignment="center"
         android:layout_alignLeft="@+id/rageComboDisplay"
         android:layout_alignStart="@+id/rageComboDisplay"
-        android:layout_alignTop="@+id/imageView4"
+        android:layout_alignTop="@+id/powerCrushDrawable"
         android:layout_alignRight="@+id/rageComboDisplay"
-        android:layout_alignEnd="@+id/rageComboDisplay" />
+        android:layout_alignEnd="@+id/rageComboDisplay"
+        android:textColor="#D9D9D9" />
 
 </RelativeLayout>

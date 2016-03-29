@@ -1,5 +1,6 @@
 package com.example.henrik.facebook_test_rightversion;
 
+//--------------------------------------ANDROID IMPORTS-------------------------------------------\\
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.AssetManager;
@@ -8,12 +9,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+//-----------------------------------------JAVA IMPORTS-------------------------------------------\\
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,23 +23,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovelistViewer extends AppCompatActivity {
-    private List<String> mLines = new ArrayList<>();
-    private TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
-    private ArrayList<Move> playerMovelist = new ArrayList<>();
+//--------------------------------------LAYOUT VARIABLES------------------------------------------\\
     private CheckBox normalMoves;
     private CheckBox pokesMoves;
     private CheckBox goodMoves;
     private CheckBox launchers;
     private CheckBox grabs;
     private CheckBox tailspins;
-    private String playerCharacter;
-    TableRow[] tableRows;
-    TableLayout secondaryTable;
-    TextView rageArtDisplay;
-    TextView rageComboDisplay;
-    TextView powerCrushDisplay;
-    int color = 0;
 
+    private TextView rageArtDisplay;
+    private TextView rageComboDisplay;
+    private TextView powerCrushDisplay;
+
+    private TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+
+    private TableRow[] tableRows;
+    private TableLayout secondaryTable;
+
+    private ImageView playerPortrait;
+    private ImageView rageArtDrawable;
+    private ImageView rageComboDrawable;
+    private ImageView powerCrushDrawable;
+
+//--------------------------------------REGULAR VARIABLES-----------------------------------------\\
+    private List<String> mLines = new ArrayList<>();
+    private ArrayList<Move> playerMovelist = new ArrayList<>();
+
+    private String playerCharacter;
+
+    private int color = 0;
+//----------------------------------------ON START-UP---------------------------------------------\\
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +68,20 @@ public class MovelistViewer extends AppCompatActivity {
         rageComboDisplay = (TextView) findViewById(R.id.rageComboDisplay);
         powerCrushDisplay = (TextView) findViewById(R.id.powerCrushDisplay);
 
+        playerPortrait = (ImageView) findViewById(R.id.playerPortrait);
+        rageArtDrawable = (ImageView) findViewById(R.id.rageArtDrawable);
+        rageComboDrawable = (ImageView) findViewById(R.id.rageComboDrawable);
+        powerCrushDrawable = (ImageView) findViewById(R.id.powerCrushDrawable);
+
         createTableHeaders();
         createFragment();
     }
 
-    public void playerPortraitClicked(View view){
-        createFragment();
+//---------------------------------------PRIVATE METHODS------------------------------------------\\
+    private void setSpecialNotations(){
+        rageArtDisplay.setText(mLines.get(0));
+        rageComboDisplay.setText(mLines.get(1));
+        powerCrushDisplay.setText(mLines.get(2));
     }
 
     private void createFragment(){
@@ -79,18 +101,21 @@ public class MovelistViewer extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void setPlayerCharacter(String selectedCharacter){
-        playerCharacter = selectedCharacter;
-        playerMovelist.clear();
-        readFile("Movelists/" + playerCharacter);
+    private void readFile(String fileName){
+        AssetManager am = getAssets();
+        String filePath = fileName + ".txt";
+        mLines.clear();
 
-        for(int i = 0; i < mLines.size(); i+=10){
-            playerMovelist.add(new Move("", mLines.get(i), mLines.get(i + 1), mLines.get(i + 2), mLines.get(i + 3), mLines.get(i + 4), mLines.get(i + 5), mLines.get(i + 6), mLines.get(i + 7), mLines.get(i + 8)));
+        try {
+            InputStream is = am.open(filePath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String line;
+
+            while ((line = reader.readLine()) != null)
+                mLines.add(line);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        readFile("Specials/" + playerCharacter);
-        setSpecialNotations();
-        createTableRows();
     }
 
     private void createTableHeaders(){
@@ -170,6 +195,118 @@ public class MovelistViewer extends AppCompatActivity {
         primaryTable.addView(columns, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
 
+    private void tableRowDesigner(Integer index){
+        tableRows[index] = new TableRow(this);
+        tableRows[index].setLayoutParams(lp);
+
+        tableRows[index].setBackgroundColor(color);
+
+        TextView command = new TextView(this);
+        command.setLayoutParams(lp);
+        command.setTextColor(Color.parseColor("#D9D9D9"));
+        command.setText(playerMovelist.get(index).getCommand());
+        command.setWidth(500);
+
+        TextView hitLevel = new TextView(this);
+        hitLevel.setLayoutParams(lp);
+        hitLevel.setTextColor(Color.parseColor("#D9D9D9"));
+        hitLevel.setText(playerMovelist.get(index).getHitLevel());
+        hitLevel.setPadding(30, 0, 0, 0);
+        hitLevel.setWidth(400);
+
+        TextView damage = new TextView(this);
+        damage.setLayoutParams(lp);
+        damage.setTextColor(Color.parseColor("#D9D9D9"));
+        damage.setText(playerMovelist.get(index).getDamage());
+        damage.setPadding(30, 0, 0, 0);
+        damage.setWidth(400);
+
+        TextView startUpFrame = new TextView(this);
+        startUpFrame.setLayoutParams(lp);
+        startUpFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        startUpFrame.setText(playerMovelist.get(index).getStartUpFrame());
+        startUpFrame.setPadding(30, 0, 0, 0);
+        startUpFrame.setWidth(400);
+
+        TextView blockFrame = new TextView(this);
+        blockFrame.setLayoutParams(lp);
+        blockFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        blockFrame.setText(playerMovelist.get(index).getDisplayBlockFrame());
+        blockFrame.setPadding(30, 0, 0, 0);
+        blockFrame.setWidth(400);
+
+        TextView hitFrame = new TextView(this);
+        hitFrame.setLayoutParams(lp);
+        hitFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        hitFrame.setText(playerMovelist.get(index).getHitFrame());
+        hitFrame.setPadding(30, 0, 0, 0);
+        hitFrame.setWidth(400);
+
+        TextView counterHitFrame = new TextView(this);
+        counterHitFrame.setLayoutParams(lp);
+        counterHitFrame.setTextColor(Color.parseColor("#D9D9D9"));
+        counterHitFrame.setText(playerMovelist.get(index).getCounterHitFrame());
+        counterHitFrame.setPadding(30, 0, 0, 0);
+        counterHitFrame.setWidth(450);
+
+        tableRows[index].addView(command);
+        tableRows[index].addView(hitLevel);
+        tableRows[index].addView(damage);
+        tableRows[index].addView(startUpFrame);
+        tableRows[index].addView(blockFrame);
+        tableRows[index].addView(hitFrame);
+        tableRows[index].addView(counterHitFrame);
+
+        secondaryTable.addView(tableRows[index], new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+    }
+
+//-----------------------------------------PUBLIC METHODS-----------------------------------------\\
+    public void checkBoxClicked(View view){
+        secondaryTable = (TableLayout) findViewById(R.id.rowLayout);
+        secondaryTable.removeAllViews();
+        tableRows = new TableRow[playerMovelist.size()];
+
+        int counter = 0;
+        color = 0;
+
+        for(int i = 0; i < playerMovelist.size(); i++) {
+            if ((counter % 2) == 0) {
+                // number is even
+                color = Color.parseColor("#801C1C1C");
+            }
+
+            else{
+                // number is odd
+                color = Color.parseColor("#800F0F0F");
+            }
+
+            if(normalMoves.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Normal")){
+                tableRowDesigner(i);
+                counter++;
+            }
+            else if(pokesMoves.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Poke")){
+                tableRowDesigner(i);
+                counter++;
+            }
+            else if(goodMoves.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("GoodMove")){
+                tableRowDesigner(i);
+                counter++;
+            }
+            else if(launchers.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Launcher")){
+                tableRowDesigner(i);
+                counter++;
+            }
+            else if(tailspins.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Tailspin")){
+                tableRowDesigner(i);
+                counter++;
+            }
+            else if(grabs.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Grab")){
+                tableRowDesigner(i);
+                counter++;
+            }
+        }
+    }
+
     public void createTableRows(){
         secondaryTable = (TableLayout) findViewById(R.id.rowLayout);
         secondaryTable.removeAllViews();
@@ -217,138 +354,35 @@ public class MovelistViewer extends AppCompatActivity {
 
     }
 
-    private void tableRowDesigner(Integer index){
-        tableRows[index] = new TableRow(this);
-        tableRows[index].setLayoutParams(lp);
+    public void setPlayerCharacter(String selectedCharacter){
+        playerCharacter = selectedCharacter;
+        playerMovelist.clear();
+        readFile("Movelists/" + playerCharacter);
 
-        tableRows[index].setBackgroundColor(color);
-
-        TextView command = new TextView(this);
-        command.setLayoutParams(lp);
-        command.setTextColor(Color.WHITE);
-        command.setText(playerMovelist.get(index).getCommand());
-        command.setWidth(500);
-
-        TextView hitLevel = new TextView(this);
-        hitLevel.setLayoutParams(lp);
-        hitLevel.setTextColor(Color.WHITE);
-        hitLevel.setText(playerMovelist.get(index).getHitLevel());
-        hitLevel.setPadding(30, 0, 0, 0);
-        hitLevel.setWidth(400);
-
-        TextView damage = new TextView(this);
-        damage.setLayoutParams(lp);
-        damage.setTextColor(Color.WHITE);
-        damage.setText(playerMovelist.get(index).getDamage());
-        damage.setPadding(30, 0, 0, 0);
-        damage.setWidth(400);
-
-        TextView startUpFrame = new TextView(this);
-        startUpFrame.setLayoutParams(lp);
-        startUpFrame.setTextColor(Color.WHITE);
-        startUpFrame.setText(playerMovelist.get(index).getStartUpFrame());
-        startUpFrame.setPadding(30, 0, 0, 0);
-        startUpFrame.setWidth(400);
-
-        TextView blockFrame = new TextView(this);
-        blockFrame.setLayoutParams(lp);
-        blockFrame.setTextColor(Color.WHITE);
-        blockFrame.setText(playerMovelist.get(index).getBlockFrame());
-        blockFrame.setPadding(30, 0, 0, 0);
-        blockFrame.setWidth(400);
-
-        TextView hitFrame = new TextView(this);
-        hitFrame.setLayoutParams(lp);
-        hitFrame.setTextColor(Color.WHITE);
-        hitFrame.setText(playerMovelist.get(index).getHitFrame());
-        hitFrame.setPadding(30, 0, 0, 0);
-        hitFrame.setWidth(400);
-
-        TextView counterHitFrame = new TextView(this);
-        counterHitFrame.setLayoutParams(lp);
-        counterHitFrame.setTextColor(Color.WHITE);
-        counterHitFrame.setText(playerMovelist.get(index).getCounterHitFrame());
-        counterHitFrame.setPadding(30, 0, 0, 0);
-        counterHitFrame.setWidth(450);
-
-        tableRows[index].addView(command);
-        tableRows[index].addView(hitLevel);
-        tableRows[index].addView(damage);
-        tableRows[index].addView(startUpFrame);
-        tableRows[index].addView(blockFrame);
-        tableRows[index].addView(hitFrame);
-        tableRows[index].addView(counterHitFrame);
-
-        secondaryTable.addView(tableRows[index], new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-    }
-
-    private void readFile(String fileName){
-        AssetManager am = getAssets();
-        String filePath = fileName + ".txt";
-        mLines.clear();
-
-        try {
-            InputStream is = am.open(filePath);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String line;
-
-            while ((line = reader.readLine()) != null)
-                mLines.add(line);
-        } catch (IOException e) {
-            e.printStackTrace();
+        for(int i = 0; i < mLines.size(); i+=10){
+            playerMovelist.add(new Move("", mLines.get(i), mLines.get(i + 1), mLines.get(i + 2), mLines.get(i + 3), mLines.get(i + 4), mLines.get(i + 5), mLines.get(i + 6), mLines.get(i + 7), mLines.get(i + 8)));
         }
+
+        readFile("Specials/" + playerCharacter);
+
+        normalMoves.setVisibility(View.VISIBLE);
+        pokesMoves.setVisibility(View.VISIBLE);
+        goodMoves.setVisibility(View.VISIBLE);
+        launchers.setVisibility(View.VISIBLE);
+        grabs.setVisibility(View.VISIBLE);
+        tailspins.setVisibility(View.VISIBLE);
+        playerPortrait.setVisibility(View.VISIBLE);
+        rageArtDrawable.setVisibility(View.VISIBLE);
+        rageComboDrawable.setVisibility(View.VISIBLE);
+        powerCrushDrawable.setVisibility(View.VISIBLE);
+
+        setSpecialNotations();
+        createTableRows();
     }
 
-    public void checkBoxClicked(View view){
-        secondaryTable = (TableLayout) findViewById(R.id.rowLayout);
-        secondaryTable.removeAllViews();
-        tableRows = new TableRow[playerMovelist.size()];
-
-        int counter = 0;
-        color = 0;
-
-        for(int i = 0; i < playerMovelist.size(); i++) {
-            if ((counter % 2) == 0) {
-                // number is even
-                color = Color.parseColor("#801C1C1C");
-            }
-
-            else{
-                // number is odd
-                color = Color.parseColor("#800F0F0F");
-            }
-
-            if(normalMoves.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Normal")){
-                tableRowDesigner(i);
-                counter++;
-            }
-            else if(pokesMoves.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Poke")){
-                tableRowDesigner(i);
-                counter++;
-            }
-            else if(goodMoves.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("GoodMove")){
-                tableRowDesigner(i);
-                counter++;
-            }
-            else if(launchers.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Launcher")){
-                tableRowDesigner(i);
-                counter++;
-            }
-            else if(tailspins.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Tailspin")){
-                tableRowDesigner(i);
-                counter++;
-            }
-            else if(grabs.isChecked() && playerMovelist.get(i).getPrimaryAttr().equals("Grab")){
-                tableRowDesigner(i);
-                counter++;
-            }
-        }
+    public void playerPortraitClicked(View view){
+        createFragment();
     }
 
-    private void setSpecialNotations(){
-        rageArtDisplay.setText(mLines.get(0));
-        rageComboDisplay.setText(mLines.get(1));
-        powerCrushDisplay.setText(mLines.get(2));
-    }
 }
 

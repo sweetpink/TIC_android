@@ -1,6 +1,7 @@
 package com.example.henrik.facebook_test_rightversion;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +52,18 @@ public class Tournament_ImageListAdapter extends ArrayAdapter {
 
         TextView nameTextview = (TextView) convertView.findViewById(R.id.result_name);
         nameTextview.setText(title.get(position));
+        nameTextview.setTextColor(Color.parseColor("#D9D9D9"));
 
         TextView dateTextview = (TextView) convertView.findViewById(R.id.date);
         dateTextview.setText(date.get(position));
+        dateTextview.setTextColor(Color.parseColor("#D9D9D9"));
+
+        if ((position % 2) == 0) {
+            convertView.setBackgroundColor(Color.parseColor("#801C1C1C"));
+        }
+        else{
+            convertView.setBackgroundColor(Color.parseColor("#800F0F0F"));
+        }
 
         return convertView;
     }

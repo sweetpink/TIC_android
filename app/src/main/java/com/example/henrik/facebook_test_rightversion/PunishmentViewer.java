@@ -1,13 +1,12 @@
 package com.example.henrik.facebook_test_rightversion;
-//--------------------------------------------ANDROID IMPORTS-------------------------------------\\
 
+//--------------------------------------------ANDROID IMPORTS-------------------------------------\\
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,8 +18,7 @@ import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+//-----------------------------------------JAVA IMPORTS-------------------------------------------\\
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,25 +26,26 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-//-----------------------------------------JAVA IMPORTS-------------------------------------------\\
-
 public class PunishmentViewer extends AppCompatActivity {
-//------------------------------------------VARIABLES---------------------------------------------\\
+//---------------------------------------LAYOUT VARIABLES-----------------------------------------\\
     private LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
     private Spinner frameSelector;
 
     private CheckBox specificBox;
 
+    private TextView punishDisplay;
+    private TextView punishersAre;
+
+    private ImageView playerPortrait;
+    private ImageView opponentPortrait;
+//--------------------------------------REGULAR VARIABLES-----------------------------------------\\
     private String playerCharacter = "";
     private String opponentCharacter = "";
 
+    private List<String> mLines = new ArrayList<>();
     private ArrayList<String> playerPunishList = new ArrayList<>();
     private ArrayList<Move> opponentMovelist = new ArrayList<>();
-    private List<String> mLines = new ArrayList<>();
-
-    private TextView punishDisplay;
-    private TextView punishersAre;
 
     private boolean firstBoot = true;
 //------------------------------------------ON START-UP-------------------------------------------\\
@@ -84,6 +83,8 @@ public class PunishmentViewer extends AppCompatActivity {
         });
         punishDisplay = (TextView) findViewById(R.id.punishDisplay);
         punishersAre = (TextView) findViewById(R.id.punishersAre);
+        opponentPortrait = (ImageView) findViewById(R.id.opponentPortrait);
+        playerPortrait = (ImageView) findViewById(R.id.playerPortrait);
 
         createTableHeaders();
 
@@ -231,48 +232,48 @@ public class PunishmentViewer extends AppCompatActivity {
 
                     TextView command = new TextView(this);
                     command.setLayoutParams(lp);
-                    command.setTextColor(Color.WHITE);
+                    command.setTextColor(Color.parseColor("#D9D9D9"));
                     command.setText(opponentMovelist.get(i).getCommand());
                     command.setWidth(500);
 
                     TextView hitLevel = new TextView(this);
                     hitLevel.setLayoutParams(lp);
-                    hitLevel.setTextColor(Color.WHITE);
+                    hitLevel.setTextColor(Color.parseColor("#D9D9D9"));
                     hitLevel.setText(opponentMovelist.get(i).getHitLevel());
                     hitLevel.setPadding(30, 0, 0, 0);
                     hitLevel.setWidth(400);
 
                     TextView damage = new TextView(this);
                     damage.setLayoutParams(lp);
-                    damage.setTextColor(Color.WHITE);
+                    damage.setTextColor(Color.parseColor("#D9D9D9"));
                     damage.setText(opponentMovelist.get(i).getDamage());
                     damage.setPadding(30, 0, 0, 0);
                     damage.setWidth(400);
 
                     TextView startUpFrame = new TextView(this);
                     startUpFrame.setLayoutParams(lp);
-                    startUpFrame.setTextColor(Color.WHITE);
+                    startUpFrame.setTextColor(Color.parseColor("#D9D9D9"));
                     startUpFrame.setText(opponentMovelist.get(i).getStartUpFrame());
                     startUpFrame.setPadding(30, 0, 0, 0);
                     startUpFrame.setWidth(400);
 
                     TextView blockFrame = new TextView(this);
                     blockFrame.setLayoutParams(lp);
-                    blockFrame.setTextColor(Color.WHITE);
-                    blockFrame.setText(opponentMovelist.get(i).getBlockFrame());
+                    blockFrame.setTextColor(Color.parseColor("#D9D9D9"));
+                    blockFrame.setText(opponentMovelist.get(i).getDisplayBlockFrame());
                     blockFrame.setPadding(30, 0, 0, 0);
                     blockFrame.setWidth(400);
 
                     TextView hitFrame = new TextView(this);
                     hitFrame.setLayoutParams(lp);
-                    hitFrame.setTextColor(Color.WHITE);
+                    hitFrame.setTextColor(Color.parseColor("#D9D9D9"));
                     hitFrame.setText(opponentMovelist.get(i).getHitFrame());
                     hitFrame.setPadding(30, 0, 0, 0);
                     hitFrame.setWidth(400);
 
                     TextView counterHitFrame = new TextView(this);
                     counterHitFrame.setLayoutParams(lp);
-                    counterHitFrame.setTextColor(Color.WHITE);
+                    counterHitFrame.setTextColor(Color.parseColor("#D9D9D9"));
                     counterHitFrame.setText(opponentMovelist.get(i).getCounterHitFrame());
                     counterHitFrame.setPadding(30, 0, 0, 0);
                     counterHitFrame.setWidth(450);
@@ -297,48 +298,48 @@ public class PunishmentViewer extends AppCompatActivity {
 
                     TextView command = new TextView(this);
                     command.setLayoutParams(lp);
-                    command.setTextColor(Color.WHITE);
+                    command.setTextColor(Color.parseColor("#D9D9D9"));
                     command.setText(opponentMovelist.get(i).getCommand());
                     command.setWidth(500);
 
                     TextView hitLevel = new TextView(this);
                     hitLevel.setLayoutParams(lp);
-                    hitLevel.setTextColor(Color.WHITE);
+                    hitLevel.setTextColor(Color.parseColor("#D9D9D9"));
                     hitLevel.setText(opponentMovelist.get(i).getHitLevel());
                     hitLevel.setPadding(30, 0, 0, 0);
                     hitLevel.setWidth(400);
 
                     TextView damage = new TextView(this);
                     damage.setLayoutParams(lp);
-                    damage.setTextColor(Color.WHITE);
+                    damage.setTextColor(Color.parseColor("#D9D9D9"));
                     damage.setText(opponentMovelist.get(i).getDamage());
                     damage.setPadding(30, 0, 0, 0);
                     damage.setWidth(400);
 
                     TextView startUpFrame = new TextView(this);
                     startUpFrame.setLayoutParams(lp);
-                    startUpFrame.setTextColor(Color.WHITE);
+                    startUpFrame.setTextColor(Color.parseColor("#D9D9D9"));
                     startUpFrame.setText(opponentMovelist.get(i).getStartUpFrame());
                     startUpFrame.setPadding(30, 0, 0, 0);
                     startUpFrame.setWidth(400);
 
                     TextView blockFrame = new TextView(this);
                     blockFrame.setLayoutParams(lp);
-                    blockFrame.setTextColor(Color.WHITE);
-                    blockFrame.setText(opponentMovelist.get(i).getBlockFrame());
+                    blockFrame.setTextColor(Color.parseColor("#D9D9D9"));
+                    blockFrame.setText(opponentMovelist.get(i).getDisplayBlockFrame());
                     blockFrame.setPadding(30, 0, 0, 0);
                     blockFrame.setWidth(400);
 
                     TextView hitFrame = new TextView(this);
                     hitFrame.setLayoutParams(lp);
-                    hitFrame.setTextColor(Color.WHITE);
+                    hitFrame.setTextColor(Color.parseColor("#D9D9D9"));
                     hitFrame.setText(opponentMovelist.get(i).getHitFrame());
                     hitFrame.setPadding(30, 0, 0, 0);
                     hitFrame.setWidth(400);
 
                     TextView counterHitFrame = new TextView(this);
                     counterHitFrame.setLayoutParams(lp);
-                    counterHitFrame.setTextColor(Color.WHITE);
+                    counterHitFrame.setTextColor(Color.parseColor("#D9D9D9"));
                     counterHitFrame.setText(opponentMovelist.get(i).getCounterHitFrame());
                     counterHitFrame.setPadding(30, 0, 0, 0);
                     counterHitFrame.setWidth(450);
@@ -385,11 +386,15 @@ public class PunishmentViewer extends AppCompatActivity {
         playerCharacter = selectedPlayer;
         readFile("Punishers/" + playerCharacter);
 
-
         playerPunishList.clear();
         for(int i = 0; i < mLines.size(); i++) {
             playerPunishList.add(mLines.get(i));
         }
+
+        specificBox.setVisibility(View.VISIBLE);
+        frameSelector.setVisibility(View.VISIBLE);
+        playerPortrait.setVisibility(View.VISIBLE);
+        opponentPortrait.setVisibility(View.VISIBLE);
 
         refreshPunishers(frameSelector.getSelectedItemPosition());
     }
