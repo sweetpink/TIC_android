@@ -33,15 +33,23 @@ public class BasicsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        list.add(new TutorialObject("LUYG", "LUYG", "https://www.youtube.com/user/LevelUpYourGame", R.drawable.uploader_luyg));
-        list.add(new TutorialObject("LUYG", "LUYG", "https://www.youtube.com/user/LevelUpYourGame", R.drawable.uploader_luyg));
-        list.add(new TutorialObject("LUYG", "LUYG", "https://www.youtube.com/user/LevelUpYourGame", R.drawable.uploader_luyg));
-        list.add(new TutorialObject("JDCR", "JDCR", "https://www.youtube.com/channel/UCPlV0OpQMImKviSTWHJEDiQ", R.drawable.uploader_jdcr));
-        list.add(new TutorialObject("JDCR", "JDCR", "https://www.youtube.com/channel/UCPlV0OpQMImKviSTWHJEDiQ", R.drawable.uploader_jdcr));
-        list.add(new TutorialObject("JDCR", "JDCR", "https://www.youtube.com/channel/UCPlV0OpQMImKviSTWHJEDiQ", R.drawable.uploader_jdcr));
-        list.add(new TutorialObject("ATP", "ATP", "https://www.youtube.com/user/AvoidingthePuddle", R.drawable.uploader_atp));
-        list.add(new TutorialObject("ATP", "ATP", "https://www.youtube.com/user/AvoidingthePuddle", R.drawable.uploader_atp));
-        list.add(new TutorialObject("ATP", "ATP", "https://www.youtube.com/user/AvoidingthePuddle", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TEKKEN TAG TOURNAMENT 2 - Tutorial Video #1 - The Basics", "LUYG", "https://www.youtube.com/watch?v=OtpT4ejbGwk&index=1&list=PLVYulCamEPqLIJXEn-RZ9oDeKMfPBammY", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("TEKKEN TAG TOURNAMENT 2 - Tutorial Video #2 - Intermediate 1 of 2", "LUYG", "https://www.youtube.com/watch?v=icaOdA7HSOU&index=2&list=PLVYulCamEPqLIJXEn-RZ9oDeKMfPBammY", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("TEKKEN TAG TOURNAMENT 2 - Tutorial Video #3 - Intermediate 2 of 2", "LUYG", "https://www.youtube.com/watch?v=b23HuTEhTdc&index=3&list=PLVYulCamEPqLIJXEn-RZ9oDeKMfPBammY", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("TEKKEN TAG TOURNAMENT 2 - Tutorial Video #4 - Combos", "LUYG", "https://www.youtube.com/watch?v=cVtPed3nBno&index=4&list=PLVYulCamEPqLIJXEn-RZ9oDeKMfPBammY", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("TEKKEN TAG TOURNAMENT 2 - Tutorial Video #5 - Advanced 1/2", "LUYG", "https://www.youtube.com/watch?v=mejjnRdG2po&index=5&list=PLVYulCamEPqLIJXEn-RZ9oDeKMfPBammY", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("TEKKEN TAG TOURNAMENT 2 - Tutorial Video #6 - Advanced 2/2", "LUYG", "https://www.youtube.com/watch?v=9z8s21qGM2o&index=6&list=PLVYulCamEPqLIJXEn-RZ9oDeKMfPBammY", R.drawable.uploader_luyg));
+
+        list.add(new TutorialObject("TTT2 Korean Back Dash Tutorial Part 1 (1P Side)", "ATP", "https://www.youtube.com/watch?v=gLp3Y0PdV94&list=PLMCyLSAjLlQ2hzsXTwVzKv4HR0ouxJNRm&index=1", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TTT2 Korean Back Dash Tutorial Part 2 (2P Side)", "ATP", "https://www.youtube.com/watch?v=gGee7eL9Vrk&list=PLMCyLSAjLlQ2hzsXTwVzKv4HR0ouxJNRm&index=2", R.drawable.uploader_atp));
+        list.add(new TutorialObject("Movement Tutorial for Tekken 6 and TTT2 Part 1: The Basics", "ATP", "https://www.youtube.com/watch?v=Z-_trL1pZeo&list=PLMCyLSAjLlQ2hzsXTwVzKv4HR0ouxJNRm&index=3", R.drawable.uploader_atp));
+        list.add(new TutorialObject("Movement Tutorial for TTT2 and Tekken 6 Part 2: Advanced", "ATP", "https://www.youtube.com/watch?v=ZmwTz9FOwxQ&list=PLMCyLSAjLlQ2hzsXTwVzKv4HR0ouxJNRm&index=4", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TTT2 Rage and Tag Crash Tutorial", "ATP", "https://www.youtube.com/watch?v=3LPu8LkR6aM&list=PLMCyLSAjLlQ2hzsXTwVzKv4HR0ouxJNRm&index=5", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TTT2 Raw Tag Safety Tutorial", "ATP", "https://www.youtube.com/watch?v=1_zusa7s7hI&list=PLMCyLSAjLlQ2hzsXTwVzKv4HR0ouxJNRm&index=6", R.drawable.uploader_atp));
+
+        list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
+        list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
+        list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
         list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
         list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
         list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));

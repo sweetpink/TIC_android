@@ -32,18 +32,28 @@ public class SpecificsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        list.add(new TutorialObject("LUYG", "LUYG", "https://www.youtube.com/user/LevelUpYourGame", R.drawable.uploader_luyg));
-        list.add(new TutorialObject("LUYG", "LUYG", "https://www.youtube.com/user/LevelUpYourGame", R.drawable.uploader_luyg));
-        list.add(new TutorialObject("LUYG", "LUYG", "https://www.youtube.com/user/LevelUpYourGame", R.drawable.uploader_luyg));
-        list.add(new TutorialObject("JDCR", "JDCR", "https://www.youtube.com/channel/UCPlV0OpQMImKviSTWHJEDiQ", R.drawable.uploader_jdcr));
-        list.add(new TutorialObject("JDCR", "JDCR", "https://www.youtube.com/channel/UCPlV0OpQMImKviSTWHJEDiQ", R.drawable.uploader_jdcr));
-        list.add(new TutorialObject("JDCR", "JDCR", "https://www.youtube.com/channel/UCPlV0OpQMImKviSTWHJEDiQ", R.drawable.uploader_jdcr));
-        list.add(new TutorialObject("ATP", "ATP", "https://www.youtube.com/user/AvoidingthePuddle", R.drawable.uploader_atp));
-        list.add(new TutorialObject("ATP", "ATP", "https://www.youtube.com/user/AvoidingthePuddle", R.drawable.uploader_atp));
-        list.add(new TutorialObject("ATP", "ATP", "https://www.youtube.com/user/AvoidingthePuddle", R.drawable.uploader_atp));
-        list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
-        list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
-        list.add(new TutorialObject("TMM", "TMM", "https://www.youtube.com/user/MitsuGTO885", R.drawable.uploader_tmm));
+        list.add(new TutorialObject("Morning Bread & Butter - Ep1 - Jinpachi Mishima", "LUYG", "https://www.youtube.com/watch?v=S2jibLH9-k4&index=1", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("Morning Bread & Butter - Ep 2 - True Ogre", "LUYG", "https://www.youtube.com/watch?v=Bp3RAFmzZb0&index=2", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("Morning Bread & Butter - Ep 3 - Forest Law", "LUYG", "https://www.youtube.com/watch?v=qTCvQUUMgbs", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("Morning Bread & Butter - Ep 4 - Jun Kazama", "LUYG", "https://www.youtube.com/watch?v=FGeFi20yy8U", R.drawable.uploader_luyg));
+        list.add(new TutorialObject("Morning Bread & Butter - Ep 5 - Paul Phoenix", "LUYG", "https://www.youtube.com/watch?v=IcMHgoEl_2E", R.drawable.uploader_luyg));
+
+
+        list.add(new TutorialObject("JDCR's tekken lesson #1 Let it go", "JDCR", "https://www.youtube.com/watch?v=7ylizAss-4k", R.drawable.uploader_jdcr));
+        list.add(new TutorialObject("JDCR's tekken lesson #2 when not to move", "JDCR", "https://www.youtube.com/watch?v=BCNRDnNNF0A", R.drawable.uploader_jdcr));
+        list.add(new TutorialObject("JDCR's tekken lesson #3 When to do Backdash (Law)", "JDCR", "https://www.youtube.com/watch?v=nUihs9P1N24", R.drawable.uploader_jdcr));
+        list.add(new TutorialObject("JDCR's tekken lesson #4 Side step and Duck (Steve)", "JDCR", "https://www.youtube.com/watch?v=BhZWtd-6aYM", R.drawable.uploader_jdcr));
+        list.add(new TutorialObject("JDCR tekken TIp #7 Basic Oki", "JDCR", "https://www.youtube.com/watch?v=182CR-JWwZA", R.drawable.uploader_jdcr));
+
+        list.add(new TutorialObject("TTT2 - Armor King tutorial part 1 of 5 - Intro, Punishers, Throws", "ATP", "https://www.youtube.com/watch?v=g9-qo4Lcdok&index=1", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TTT2 - Armor King tutorial part 2 of 5 - Pokes, and Move Breakdown", "ATP", "https://www.youtube.com/watch?v=DWB5yg-0Dko&index=2", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TTT2 - Armor King tutorial part 3 of 5 - Movelist Breakdown", "ATP", "https://www.youtube.com/watch?v=68OI9u0_OdM&index=3", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TTT2 - Armor King tutorial part 4 of 5 - Wall Game", "ATP", "https://www.youtube.com/watch?v=A6gnNK4VPU4", R.drawable.uploader_atp));
+        list.add(new TutorialObject("TTT2 - Armor King tutorial part 5 of 5 - More Wall Game, and Wrap up", "ATP", "https://www.youtube.com/watch?v=ZaJVCTwJBIM", R.drawable.uploader_atp));
+
+        list.add(new TutorialObject("Devil Jin Guide", "TMM", "https://www.youtube.com/watch?v=ZZ29NSb1r6s&index=1", R.drawable.uploader_tmm));
+        list.add(new TutorialObject("Heihachi Mishima Guide", "TMM", "https://www.youtube.com/watch?v=15ywUJzskuU&index=3", R.drawable.uploader_tmm));
+        list.add(new TutorialObject("Kazuya Mishima Guide", "TMM", "https://www.youtube.com/watch?v=ZSTEXcJqxGM&index=4", R.drawable.uploader_tmm));
 
         spinner = (Spinner) getView().findViewById(R.id.upploaderChoice);
 
